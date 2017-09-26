@@ -12,13 +12,15 @@ import Layout from '../constants/Layout';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+   title: "Home"
   };
 
   render() {
     return (
         <View>
-          <Text>Hello World!!</Text>
+          <Text
+          style={{fontSize: 20, color: "red", marginTop: 20}}
+          >Hello World!!</Text>
           <Image 
           style={{width: Layout.window.width, height: Layout.window.height * 0.33}}
           source={require('../assets/images/exercises.jpg')} />
