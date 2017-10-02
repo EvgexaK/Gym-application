@@ -10,6 +10,7 @@ import {
   Button,
 } from 'react-native';
 import Layout from '../constants/Layout';
+import Database from '../api/database';
 
 // Importing Menu Item components that we have created
 import MenuItem from '../components/MenuItem';
@@ -22,6 +23,10 @@ export default class HomeScreen extends React.Component {
   };
   handlePress() {
     console.log('1234567');
+  }
+
+  getExercises() {
+    Database.getExercises();
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -47,8 +52,8 @@ export default class HomeScreen extends React.Component {
           </ScrollView>
 
           <Button
-          onPress={() => navigate('exercise')}
-          title="Chat with Lucy"
+          onPress={() => this.getExercises()}
+          title="Get exercise"
         />
 
           <Text>1234</Text>

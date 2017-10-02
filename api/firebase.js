@@ -12,7 +12,7 @@ class Firebase {
             authDomain: "YOUR KEY",
             databaseURL: "YOUR KEY",
             storageBucket: "YOUR KEY",
-            messagingSenderId: "YOUR KEY"
+            messagingSenderId: "BLAH BLAH BALH"
         });
     }
 
