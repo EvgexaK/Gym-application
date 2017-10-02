@@ -7,9 +7,9 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
 } from 'react-native';
 import Layout from '../constants/Layout';
-import { StackNavigator } from 'react-navigation';
 
 // Importing Menu Item components that we have created
 import MenuItem from '../components/MenuItem';
@@ -24,8 +24,10 @@ export default class HomeScreen extends React.Component {
     console.log('1234567');
   }
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <ScrollView>
+        
           <ScrollView
             horizontal
           >
@@ -43,6 +45,12 @@ export default class HomeScreen extends React.Component {
                 description={'Lorem ipsum dolor sit amet in vina veritas'}
                 imageSource={require('../assets/images/exercises.jpg')}/>
           </ScrollView>
+
+          <Button
+          onPress={() => navigate('exercise')}
+          title="Chat with Lucy"
+        />
+
           <Text>1234</Text>
           <InputTest value={'Placeholder'}/>
       </ScrollView>
