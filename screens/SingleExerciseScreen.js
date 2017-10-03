@@ -8,15 +8,15 @@ import {
 import Layout from '../constants/Layout';
 
 
-export default class ExerciseScreen extends React.Component {
+export default class SingleExerciseScreen extends React.Component {
   static navigationOptions = {
-   title: "Exercise",
+   title: "This is Exercise",
   };
 
   render() {
     return (
       <ScrollView>
-            <Text>Hello World</Text>
+            <Text>Sigle Exercise Here</Text>
         </ScrollView>
     );
   }

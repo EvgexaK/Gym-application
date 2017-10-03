@@ -8,6 +8,7 @@ import Colors from '../constants/Colors';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ExerciseScreen from '../screens/ExerciseScreen';
 
 export default TabNavigator(
   {
@@ -20,6 +21,10 @@ export default TabNavigator(
     Settings: {
       screen: SettingsScreen,
     },
+    Exercise: {
+      screen: ExerciseScreen,
+    },
+
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -28,19 +33,16 @@ export default TabNavigator(
         let iconName;
         switch (routeName) {
           case 'Home':
-            iconName = Platform.OS === 'ios'
-              ? `ios-information-circle${focused ? '' : '-outline'}`
-              : 'md-information-circle';
+            iconName = `ios-information-circle`
             break;
           case 'Links':
-            iconName = Platform.OS === 'ios'
-              ? `ios-link${focused ? '' : '-outline'}`
-              : 'md-link';
+            iconName = `ios-link${focused ? '' : '-outline'}`
             break;
           case 'Settings':
-            iconName = Platform.OS === 'ios'
-              ? `ios-options${focused ? '' : '-outline'}`
-              : 'md-options';
+            iconName = `ios-options${focused ? '' : '-outline'}`
+            break;
+          case 'Exercise':
+            iconName = `ios-stats${focused ? '' : '-outline'}`
         }
         return (
           <Ionicons
@@ -58,3 +60,10 @@ export default TabNavigator(
     swipeEnabled: false,
   }
 );
+
+
+
+
+
+vierailija
+langaton234
