@@ -1,86 +1,59 @@
-import React, { Component } from 'react';
+import React, { Component }  from "react";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-import { AppRegistry, StyleSheet, FlatList, Text, View, Alert } from 'react-native';
-
-class Myproject extends Component {
- 
- constructor(props)
- {
-   super(props);
-
-   this.state = { FlatListItems: [
-     {key: 'One'},
-     {key: 'Two'},
-     {key: 'Three'},
-     {key: 'Four'},
-     {key: 'Five'},
-     {key: 'Six'},
-     {key: 'Seven'},
-     {key: 'Eight'},
-     {key: 'Nine'},
-     {key: 'Ten'},
-     {key: 'Eleven'},
-     {key: 'Twelve'}
-   ]}
- }
-
-FlatListItemSeparator = () => {
-   return (
-     <View
-       style={{
-         height: 1,
-         width: "100%",
-         backgroundColor: "#607D8B",
-       }}
-     />
-   );
- }
-
- GetItem (item) {
-  
- Alert.alert(item);
-
- }
-
-
- render() {
-   return (
-
-<View style={styles.MainContainer}>
- 
-      <FlatList
-      
-         data={ this.state.FlatListItems }
-         
-         ItemSeparatorComponent = {this.FlatListItemSeparator}
-
-         renderItem={({item}) => <Text style={styles.item} onPress={this.GetItem.bind(this, item.key)} > {item.key} </Text>}
-        />
-   
-   
-</View>
-           
-   );
- }
+class MenuItem extends Component {
+    render() {
+        return (
+            <TouchableOpacity onPress={() => {this.props.handlePress()}}>
+            <View style={styles.container}>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={this.props.imageSource}/>
+                </View>
+                <View>
+                    <Text style={styles.title}>{this.props.title}</Text>
+                    <Text style={styles.description}>{this.props.description}</Text>     
+                   
+                    </View>
+            </View>
+            </TouchableOpacity>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        width: 300,
+        height: 420,
+        flexDirection: "row",
+        backgroundColor: '#333333', 
+        borderColor: '#808080', 
+        borderWidth: 1,
+        borderRadius: 10,
+        alignItems: 'center',
+        paddingHorizontal: 16,
+        marginTop: 16,
+        marginRight: 16,
+        marginBottom: 5,
+        marginLeft: 30,
+    },
+    imageContainer: {
+        padding: 8,
+        flex: 1,
+    },
+    image: {
+        width: 234,
+        height: 234,
+    },
+    title: {
+        fontWeight: '500',
+        fontSize: 20,
+    },
+    description: {
+        fontSize: 16,
+        width: 100,
+    }
 
-MainContainer :{
+})
 
-// Setting up View inside content in Vertically center.
-justifyContent: 'center',
-flex:1,
-margin: 10
-
-},
-
-item: {
-   padding: 10,
-   fontSize: 18,
-   height: 44,
- },
-
-});
-
-AppRegistry.registerComponent('Myproject', () => Myproject);
+export default MenuItem;

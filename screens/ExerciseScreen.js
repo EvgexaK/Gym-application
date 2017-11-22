@@ -10,7 +10,7 @@ import Layout from '../constants/Layout';
 
 export default class ExerciseScreen extends React.Component {
   static navigationOptions = {
-   title: "Exercise",
+   title: "Account Page",
   };
 
   render() {
