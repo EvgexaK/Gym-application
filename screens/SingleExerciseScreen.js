@@ -1,24 +1,25 @@
 import React, { Component }  from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
 
 class MenuItem extends Component {
+    static navigationOptions = {
+        title: "Choose your training:"
+       };
     render() {
         return (
-            <TouchableOpacity onPress={() => {this.props.handlePress()}}>
-            <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={this.props.imageSource}/>
-                </View>
-                <View>
-                    <Text style={styles.title}>{this.props.title}</Text>
-                    <Text style={styles.description}>{this.props.description}</Text>     
-                   
-                    </View>
-            </View>
-            </TouchableOpacity>
+            <ScrollView
+                vertical
+                >
+          <Image source={require('../assets/images/abs.png')} />
+          <Image source={require('../assets/images/triceps.png')} />
+          <Image source={require('../assets/images/situps.png')} />
+          <Image source={require('../assets/images/pushups.png')} />
+          </ScrollView>
         )
     }
 }
+
+
 
 const styles = StyleSheet.create({
     container: {
