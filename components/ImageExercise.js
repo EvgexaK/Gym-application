@@ -1,13 +1,22 @@
 import React, { Component }  from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import Layout from '../constants/Layout'
 
 class MenuItem extends Component {
+    componentWillMount() {
+        console.log(this.props.imageSource)
+    }
+    constructor(props){
+        super(props);
+        this.state = {
+        }
+      }
     render() {
         return (
             <TouchableOpacity onPress={() => {this.props.handlePress()}}>
-            <View style={styles.container}>
+            <View style={[styles.container, {backgroundColor: this.props.color}]}>
                 <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={this.props.imageSource}/>
+                    <Image style={styles.image} source={{uri: this.props.imageSource}}/>
                 </View>
                 <View>
                     <Text style={styles.title}>{this.props.title}</Text>
@@ -26,11 +35,10 @@ const styles = StyleSheet.create({
         width: 300,
         height: 420,
         flexDirection: "row",
-        backgroundColor: '#333333', 
         borderColor: '#808080', 
+        backgroundColor: '#F2C94C',
         borderWidth: 1,
         borderRadius: 10,
-        alignItems: 'center',
         paddingHorizontal: 16,
         marginTop: 16,
         marginRight: 16,
@@ -44,6 +52,7 @@ const styles = StyleSheet.create({
     image: {
         width: 234,
         height: 234,
+        marginTop: 100
     },
     title: {
         fontWeight: '500',

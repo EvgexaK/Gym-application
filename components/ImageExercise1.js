@@ -9,11 +9,6 @@ class MenuItem extends Component {
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={this.props.imageSource}/>
                 </View>
-                <View>
-                    <Text style={styles.title}>{this.props.title}</Text>
-                    <Text style={styles.description}>{this.props.description}</Text>     
-                   
-                    </View>
             </View>
             </TouchableOpacity>
         )

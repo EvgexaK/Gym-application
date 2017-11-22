@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import SingleExerciseScreen from '../screens/SingleExerciseScreen';
+import ExercisesScreen from '../screens/ExercisesScreen';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
@@ -13,6 +14,9 @@ const RootStackNavigator = StackNavigator(
     },
     SingleExercise: {
       screen: SingleExerciseScreen
+    },
+    ExercisesScreen: {
+      screen: ExercisesScreen
     }
   },
   {

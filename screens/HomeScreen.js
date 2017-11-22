@@ -49,9 +49,11 @@ export default class HomeScreen extends React.Component {
           <ScrollView
             vertical
           >
-              <ImageExercise
+              <ImageExercise1
                 handlePress={() => this.props.navigation.navigate('SingleExercise', { name: "Benchpress"})}
-                imageSource={require('../assets/images/start.png')}/>
+                imageSource={require('../assets/images/start.png')}
+                color={'#333333'}
+                />
 
           </ScrollView>
           

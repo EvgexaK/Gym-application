@@ -6,23 +6,23 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import Library from '../screens/Library';
 import SettingsScreen from '../screens/SettingsScreen';
-import ExerciseScreen from '../screens/ExerciseScreen';
+import AccountPage from '../screens/AccountPage';
 
 export default TabNavigator(
   {
     Home: {
       screen: HomeScreen,
     },
-    Links: {
-      screen: LinksScreen,
+    Library: {
+      screen: Library,
     },
     Settings: {
       screen: SettingsScreen,
     },
-    Exercise: {
-      screen: ExerciseScreen,
+    Account: {
+      screen: AccountPage,
     },
 
   },
@@ -36,7 +36,7 @@ export default TabNavigator(
             iconName = require('../assets/icons/Home.png'),
             focusedIconName =  require('../assets/icons/HomeC.png')
             break;
-          case 'Links':
+          case 'Library':
             iconName = require('../assets/icons/Gym.png'),
             focusedIconName =  require('../assets/icons/GymC.png')
             break;
@@ -44,7 +44,7 @@ export default TabNavigator(
             iconName = require('../assets/icons/Map.png'),
             focusedIconName =  require('../assets/icons/MapC.png')
             break;
-          case 'Exercise':
+          case 'Account':
             iconName = require('../assets/icons/Account.png'),
             focusedIconName =  require('../assets/icons/AccountC.png')
         }

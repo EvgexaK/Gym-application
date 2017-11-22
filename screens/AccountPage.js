@@ -8,7 +8,7 @@ import {
 import Layout from '../constants/Layout';
 
 
-export default class ExerciseScreen extends React.Component {
+export default class AccountPage extends React.Component {
   static navigationOptions = {
    title: "Account Page",
   };
