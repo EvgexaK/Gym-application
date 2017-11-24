@@ -1,27 +1,21 @@
 import React from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Layout from '../constants/Layout';
 
+const styles = StyleSheet.create({});
 
-export default class AccountPage extends React.Component {
+class AccountPage extends React.Component {
   static navigationOptions = {
-   title: "Account Page",
+    title: 'Account Page',
   };
 
   render() {
     return (
       <ScrollView>
-            <Text>Hello World</Text>
-        </ScrollView>
+        <Text>Hello World</Text>
+      </ScrollView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-
-});
+export default AccountPage;
