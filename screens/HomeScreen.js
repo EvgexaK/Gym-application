@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
   Button,
-  FlatList
+  FlatList,
 } from 'react-native';
 import Layout from '../constants/Layout';
 import Database from '../api/database';
@@ -19,45 +19,43 @@ import ImageExercise from '../components/ImageExercise';
 import ImageExercise1 from '../components/ImageExercise1';
 import InputTest from '../components/InputTest';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = {
-   title: "Home"
+    title: 'Home',
   };
   handlePress() {
     console.log('1234567');
   }
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      exercises: [{name: '1'},{type: '2'} ]
-    }
+      exercises: [{ name: '1' }, { type: '2' }],
+    };
   }
   getExercises() {
     console.log(223);
-    Database.getExercises( (exercises) => {
+    Database.getExercises(exercises => {
       console.log(exercises);
       this.setState({
-      exercises: exercises
-      })
+        exercises: exercises,
+      });
     });
   }
   render() {
     const { navigate } = this.props.navigation;
     return (
-        
-          <ScrollView
-            vertical
-          >
-              <ImageExercise1
-                handlePress={() => this.props.navigation.navigate('SingleExercise', { name: "Benchpress"})}
-                imageSource={require('../assets/images/start.png')}
-                color={'#333333'}
-                />
+      <ScrollView vertical>
+        <ImageExercise1
+          handlePress={() =>
+            this.props.navigation.navigate('SingleExercise', {
+              name: 'Benchpress',
+            })}
+          imageSource={require('../assets/images/start.png')}
+          color={'#333333'}
+        />
 
-          </ScrollView>
-          
-        
+      </ScrollView>
     );
   }
 }
@@ -70,3 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default HomeScreen;
