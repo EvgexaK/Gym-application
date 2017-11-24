@@ -1,8 +1,14 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Layout from '../constants/Layout';
+import { backgroundColor } from '../constants/Colors';
+import {titleText} from '../constants/Fonts';
 
-const styles = StyleSheet.create({});
+// console.log(backgroundColor);
+
+const styles = StyleSheet.create({
+  titleText,
+});
 
 class AccountPage extends React.Component {
   static navigationOptions = {
@@ -12,6 +18,11 @@ class AccountPage extends React.Component {
   render() {
     return (
       <ScrollView>
+        <View
+          style={{ width: '100%', height: 50, backgroundColor}}
+        >
+          <Text style={styles.titleText}>Account</Text>
+        </View>
         <Text>Hello World</Text>
       </ScrollView>
     );
@@ -19,3 +30,4 @@ class AccountPage extends React.Component {
 }
 
 export default AccountPage;
+

@@ -1,5 +1,7 @@
 const tintColor = '#F2C94C';
 
+export const backgroundColor = '#EEC03C';
+
 export default {
   primaryColor: "#F2C94C",
   tintColor,
@@ -13,3 +15,4 @@ export default {
   noticeBackground: tintColor,
   noticeText: '#fff',
 };
+
