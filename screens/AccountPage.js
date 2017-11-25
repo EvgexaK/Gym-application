@@ -72,8 +72,8 @@ class AccountPage extends React.Component {
           dafaultValue={fb}
           onChangeText={this.handleChange}
         />
-        <View style={styles.about}>
-          <Text>About GYM</Text>
+        <View style={styles.aboutView}>
+          <Text style={styles.aboutText}>About GYM</Text>
         </View>
       </ScrollView>
     );
@@ -98,21 +98,23 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
   },
-  about:{
+  aboutView: {
     height: 64,
     borderBottomLeftRadius: 16,
     borderBottomRightRadius: 16,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+    // borderTopLeftRadius: 16,
+    // borderTopRightRadius: 16,
 
-    // borderBottomLeftRadius: 32,
-    // borderBottomRightRadius: 32,
-    // borderTopLeftRadius: 32,
-    // borderTopRightRadius: 32,
-    backgroundColor: '#F2C94C',
+    backgroundColor: '#262626',
     padding: 16,
-    margin: 32,
-  }
+    marginLeft: 32,
+    marginRight: 32,
+  },
+  aboutText: {
+    color: '#E9B52F',
+    fontSize: 32,
+    textAlign: 'center',
+  },
 });
 
 export default AccountPage;
