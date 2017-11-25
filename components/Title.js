@@ -8,18 +8,13 @@ const styles = StyleSheet.create({
   titleText,
 });
 
-class Title extends React.Component {
-  render() {
-    const { title } = this.props;
-    return (
-      <View
-        style={{ width: '100%', height: 50, backgroundColor }}
-      >
-        <Text style={styles.titleText}>{title}</Text>
-      </View>
-    )
-  }
-}
-
+const Title = props => {
+  const { title } = props;
+  return (
+    <View style={{ width: '100%', height: 50, backgroundColor }}>
+      <Text style={styles.titleText}>{title}</Text>
+    </View>
+  );
+};
 
 export default Title;

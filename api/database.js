@@ -2,7 +2,7 @@ import * as firebase from "firebase";
 
 class Database {
     static getExercises(callback) {
-        console.log(11111111)
+        console.log('getExercises')
         let ref = firebase.database().ref().child('exercises');
         ref.on('value', (snap) => {
             callback(snap.val())
@@ -10,7 +10,7 @@ class Database {
     }
 
     static getMachines(callback) {
-        console.log(11111111)
+        console.log('getMachines')
         let ref = firebase.database().ref().child('exercises');
         ref.on('value', (snap) => {
             callback(snap.val())

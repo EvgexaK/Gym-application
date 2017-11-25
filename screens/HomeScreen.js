@@ -11,7 +11,6 @@ import {
   FlatList,
 } from 'react-native';
 import Layout from '../constants/Layout';
-import Database from '../api/database';
 
 // Importing Menu Item components that we have created
 import MenuItem from '../components/MenuItem';
@@ -24,7 +23,7 @@ class HomeScreen extends React.Component {
     title: 'Home',
   };
   handlePress() {
-    console.log('1234567');
+    // console.log('1234567');
   }
 
   constructor(props) {
@@ -33,15 +32,7 @@ class HomeScreen extends React.Component {
       exercises: [{ name: '1' }, { type: '2' }],
     };
   }
-  getExercises() {
-    console.log(223);
-    Database.getExercises(exercises => {
-      console.log(exercises);
-      this.setState({
-        exercises: exercises,
-      });
-    });
-  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (

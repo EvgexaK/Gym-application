@@ -3,15 +3,15 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
-import Firebase from "./api/firebase";
+import Firebase from './data/firebase';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   };
-  constructor(props){
+  constructor(props) {
     super(props);
-    Firebase.initialise();
+    // Firebase.initialise();
   }
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {

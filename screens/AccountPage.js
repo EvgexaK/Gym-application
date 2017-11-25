@@ -3,32 +3,85 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import Layout from '../constants/Layout';
 import Title from '../components/Title';
+import Box3 from '../components/Box3';
+import Input from '../components/Input';
+import * as Members from '../data/members';
+
+const DEBUG = true;
 
 class AccountPage extends React.Component {
+  state = { fields: {} };
+  componentDidMount() {
+    const { id = 'id0' } = this.props;
+    DEBUG && console.log('fetch AccountPage data');
+    Members.getById(id).on('value', fields => {
+      DEBUG && console.log('fetched AccountPage data', fields.val());
+      this.setState({ fields: fields.val() });
+    });
+  }
+
   static navigationOptions = {
     title: 'Account Page',
   };
 
+  handleChange = ({ name, value }) => {
+    const { fields } = this.state;
+    fields[name] = value;
+    this.setState({ fields });
+  };
+
   render() {
+    console.log(this.state);
+    const { name, height, days, weight, email, phone, fb } = this.state.fields;
     return (
       <ScrollView>
-        <Title title="Account"/>
-        <View style={styles.column}>
-          <View style={styles.box} >
-            <Text style={styles.textLabel} >left</Text>
+        <Title title="Account" />
+        <View style={styles.row}>
+          <View style={styles.box}>
+            <Text style={styles.textLabel}>Wellcome</Text>
+            <Text style={styles.textLabel1}>{name}</Text>
           </View>
-          <View style={styles.box} >
-            <Text style={styles.textLabel} >right</Text>
+          <View style={styles.box}>
+            <Text style={styles.textLabel}>Have a</Text>
+            <Text style={styles.textLabel1}>Nice day!</Text>
           </View>
         </View>
-        <Text>Hello World</Text>
+        <View style={styles.row}>
+          <Box3 label="Height" value={height} />
+          <Box3 label="Day's in Gym" value={days} />
+          <Box3 label="Weight" value={weight} />
+        </View>
+        <Input
+          name="email"
+          iconName="envelope-o"
+          label="Email"
+          dafaultValue={email}
+          onChangeText={this.handleChange}
+        />
+        <Input
+          name="phone"
+          iconName="phone"
+          label="Phone"
+          dafaultValue={phone}
+          onChangeText={this.handleChange}
+        />
+        <Input
+          name="fb"
+          iconName="money"
+          label="FB"
+          dafaultValue={fb}
+          onChangeText={this.handleChange}
+        />
+        <View style={styles.about}>
+          <Text>About GYM</Text>
+        </View>
       </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  column: {
+  row: {
     flexDirection: 'row',
     height: 50,
   },
@@ -41,8 +94,25 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
   },
+  textLabel1: {
+    color: 'white',
+    textAlign: 'center',
+  },
+  about:{
+    height: 64,
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+
+    // borderBottomLeftRadius: 32,
+    // borderBottomRightRadius: 32,
+    // borderTopLeftRadius: 32,
+    // borderTopRightRadius: 32,
+    backgroundColor: '#F2C94C',
+    padding: 16,
+    margin: 32,
+  }
 });
 
-
 export default AccountPage;
-
