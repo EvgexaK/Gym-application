@@ -1,11 +1,12 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import {connect} from 'react-redux';
 
-import Layout from '../constants/Layout';
-import Title from '../components/Title';
-import Box3 from '../components/Box3';
-import Input from '../components/Input';
-import * as Members from '../data/members';
+import Layout from '../../constants/Layout';
+import Title from '../../components/Title';
+import Box3 from '../../components/Box3';
+import Input from '../../components/Input';
+import * as Members from '../../data/members';
 
 const DEBUG = false;
 
@@ -16,7 +17,11 @@ class AccountPage extends React.Component {
   };
   constructor(props) {
     super(props);
-    // check user
+    const { navigate } = this.props.navigation;
+    // if !member go Login
+    if (!props.memberId){
+      navigate("LoginScreen");
+    }
   }
 
   componentDidMount() {
@@ -39,7 +44,6 @@ class AccountPage extends React.Component {
   };
 
   render() {
-    console.log({AccountPageprops: this.props});
     const { name, height, days, weight, email, phone, fb } = this.state.fields;
     return (
       <ScrollView>
@@ -125,4 +129,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountPage;
+export default connect(s => s.member)(AccountPage);

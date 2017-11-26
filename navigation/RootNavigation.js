@@ -3,9 +3,11 @@ import React from "react";
 import { StackNavigator } from "react-navigation";
 
 import MainTabNavigator from "./MainTabNavigator";
+import registerForPushNotificationsAsync from "../api/registerForPushNotificationsAsync";
+
 import SingleExerciseScreen from "../screens/SingleExerciseScreen";
 import ExercisesScreen from "../screens/ExercisesScreen";
-import registerForPushNotificationsAsync from "../api/registerForPushNotificationsAsync";
+import RegisterScreen from '../screens/account/register';
 
 const RootStackNavigator = StackNavigator(
   {
@@ -17,6 +19,9 @@ const RootStackNavigator = StackNavigator(
     },
     ExercisesScreen: {
       screen: ExercisesScreen
+    },
+    RegisterScreen: {
+      screen: RegisterScreen
     }
   },
   {

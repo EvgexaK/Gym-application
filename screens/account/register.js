@@ -1,14 +1,16 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import Title from "../components/Title";
+import Title from "../../components/Title";
+
+import pack from "../../package.json";
 
 // create a component
 class Login extends Component {
   render() {
     return <View style={styles.container}>
-        <Title title="GymApp" />
-        <Text>Login</Text>
+        <Title title={pack.name} />
+
       </View>;
   }
 }

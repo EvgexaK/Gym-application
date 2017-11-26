@@ -11,6 +11,10 @@ import { Ionicons } from "@expo/vector-icons";
 import RootNavigation from "./navigation/RootNavigation";
 import Firebase from "./data/firebase";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
+
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
@@ -23,11 +27,9 @@ export default class App extends React.Component {
 
   fetchState = async () => {
     try {
-      const state = await AsyncStorage.getItem("@Gyp-App:State");
-      if (!state) {
-        return;
-      } else {
-        this.setState({ ...this.state, ...state });
+      const payload = await AsyncStorage.getItem("@Gyp-App:State");
+      if (payload) {
+        store.dispatch({type:'MEMBER_FETCH', payload});
       }
     } catch (error) {
       // Error retrieving data
@@ -44,15 +46,13 @@ export default class App extends React.Component {
         />
       );
     } else {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-          {Platform.OS === "android" && (
-            <View style={styles.statusBarUnderlay} />
-          )}
-          <RootNavigation app={this.state} />
-        </View>
-      );
+      return <Provider store={store}>
+          <View style={styles.container}>
+            {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+            {Platform.OS === "android" && <View style={styles.statusBarUnderlay} />}
+            <RootNavigation app={this.state} />
+          </View>
+        </Provider>;
     }
   }
 

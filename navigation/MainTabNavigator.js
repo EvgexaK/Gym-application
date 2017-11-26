@@ -8,14 +8,14 @@ import Colors from "../constants/Colors";
 import HomeScreen from "../screens/HomeScreen";
 import Library from "../screens/Library";
 import SettingsScreen from "../screens/SettingsScreen";
-import AccountPage from "../screens/AccountPage";
+import Account from "../screens/account/index";
 
 export default TabNavigator(
   {
-    Home: { screen: HomeScreen},
+    Home: { screen: HomeScreen },
     Library: { screen: Library },
     Settings: { screen: SettingsScreen },
-    Account: { screen: AccountPage }
+    Account: { screen: Account }
   },
   {
     navigationOptions: ({ navigation }) => ({
