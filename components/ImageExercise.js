@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Layout from '../constants/Layout';
 
 class MenuItem extends Component {
-  componentWillMount() {
-    console.log(this.props.imageSource);
-  }
+  // componentWillMount() {
+  //   // console.log(this.props.imageSource);
+  // }
   constructor(props) {
     super(props);
     this.state = {};

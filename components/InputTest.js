@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
   StyleSheet,
   Image,
   TouchableOpacity,
-  TextInput,
-} from 'react-native';
+  TextInput
+} from "react-native";
 
 export default class InputTest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: this.props.value,
+      text: this.props.value
     };
   }
 
@@ -20,7 +20,7 @@ export default class InputTest extends Component {
     return (
       <View>
         <TextInput
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
         />

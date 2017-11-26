@@ -16,7 +16,7 @@ export function getAll(filter) {
   return Db.ref(`${tableName}`);
 }
 
-getAll().on('value', snapshot => console.log(snapshot.val()));
+// getAll().on('value', snapshot => console.log(snapshot.val()));
 
 export function getById(id) {
   return Db.ref(`${tableName}/${id}`);

@@ -1,9 +1,15 @@
-import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { AppLoading, Asset, Font } from 'expo';
-import { Ionicons } from '@expo/vector-icons';
-import RootNavigation from './navigation/RootNavigation';
-import Firebase from './data/firebase';
+import React from "react";
+import {
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+  AsyncStorage
+} from "react-native";
+import { AppLoading, Asset, Font } from "expo";
+import { Ionicons } from "@expo/vector-icons";
+import RootNavigation from "./navigation/RootNavigation";
+import Firebase from "./data/firebase";
 
 export default class App extends React.Component {
   state = {
@@ -12,7 +18,22 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     // Firebase.initialise();
+    this.fetchState();
   }
+
+  fetchState = async () => {
+    try {
+      const state = await AsyncStorage.getItem("@Gyp-App:State");
+      if (!state) {
+        return;
+      } else {
+        this.setState({ ...this.state, ...state });
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
@@ -25,10 +46,11 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          {Platform.OS === 'android' &&
-            <View style={styles.statusBarUnderlay} />}
-          <RootNavigation />
+          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+          {Platform.OS === "android" && (
+            <View style={styles.statusBarUnderlay} />
+          )}
+          <RootNavigation app={this.state} />
         </View>
       );
     }
@@ -37,16 +59,16 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require('./assets/images/robot-dev.png'),
-        require('./assets/images/robot-prod.png'),
+        require("./assets/images/robot-dev.png"),
+        require("./assets/images/robot-prod.png")
       ]),
       Font.loadAsync([
         // This is the font that we are using for our tab bar
         Ionicons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
-        { 'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf') },
-      ]),
+        { "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf") }
+      ])
     ]);
   };
 
@@ -64,10 +86,10 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2C94C',
+    backgroundColor: "#F2C94C"
   },
   statusBarUnderlay: {
     height: 24,
-    backgroundColor: 'rgba(0,0,0,0.2)',
-  },
+    backgroundColor: "rgba(0,0,0,0.2)"
+  }
 });

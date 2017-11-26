@@ -10,9 +10,9 @@ export function getById(id) {
   return Db.ref(`${tableName}/${id}`);
 }
 
-const test = Db.ref('/');
+// const test = Db.ref('/');
 
-test.on('value', console.log);
+// test.on('value', console.log);
 
 
 

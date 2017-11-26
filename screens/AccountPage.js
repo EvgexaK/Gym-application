@@ -7,21 +7,29 @@ import Box3 from '../components/Box3';
 import Input from '../components/Input';
 import * as Members from '../data/members';
 
-const DEBUG = true;
+const DEBUG = false;
 
 class AccountPage extends React.Component {
-  state = { fields: {} };
+  state = {
+    fields: {},
+    isLoadingComplete: false
+  };
+  constructor(props) {
+    super(props);
+    // check user
+  }
+
   componentDidMount() {
-    const { id = 'id0' } = this.props;
-    DEBUG && console.log('fetch AccountPage data');
-    Members.getById(id).on('value', fields => {
-      DEBUG && console.log('fetched AccountPage data', fields.val());
+    const { id = "id0" } = this.props;
+    DEBUG && console.log("fetch AccountPage data");
+    Members.getById(id).on("value", fields => {
+      DEBUG && console.log("fetched AccountPage data", fields.val());
       this.setState({ fields: fields.val() });
     });
   }
 
   static navigationOptions = {
-    title: 'Account Page',
+    title: "Account Page"
   };
 
   handleChange = ({ name, value }) => {
@@ -31,7 +39,7 @@ class AccountPage extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log({AccountPageprops: this.props});
     const { name, height, days, weight, email, phone, fb } = this.state.fields;
     return (
       <ScrollView>
