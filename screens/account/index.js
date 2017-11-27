@@ -14,7 +14,7 @@ import pack from "../../package.json";
 const Login = props => {
   const { handle, handleChange, handleFogot, tab } = props;
   return (tab==='register')
-  ? <Register {...props} />
+  ? <Register />
   : (
     <View style={styles.container}>
       <View style={styles.formContainer}>
