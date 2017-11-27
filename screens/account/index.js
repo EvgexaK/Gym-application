@@ -7,15 +7,15 @@ import AccountPage from "./main";
 import Title from "../../components/Title";
 import styles from "./styles";
 
-import Register from './register';
-import TabControl from './tab';
+import Register from "./register";
+import TabControl from "./tab";
 
 import pack from "../../package.json";
 const Login = props => {
   const { handle, handleChange, handleFogot, tab } = props;
-  return (tab==='register')
-  ? <Register />
-  : (
+  return tab === "register" ? (
+    <Register />
+  ) : (
     <View style={styles.container}>
       <View style={styles.formContainer}>
         <TabControl {...props} />
@@ -44,9 +44,8 @@ const Login = props => {
 };
 
 // create a component
-const Account = props => {
-  return props.memberId ? <AccountPage /> : <Login {...props} />;
-};
+const Account = props =>
+  props.memberId ? <AccountPage /> : <Login {...props} />;
 
 Account.propTypes = {
   handle: PropTypes.func.isRequired,

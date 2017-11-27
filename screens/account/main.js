@@ -17,11 +17,11 @@ class AccountPage extends React.Component {
   };
   constructor(props) {
     super(props);
-    const { navigate } = this.props.navigation;
-    // if !member go Login
-    if (!props.memberId){
-      navigate("LoginScreen");
-    }
+    // const { navigate } = props.navigation;
+    // // if !member go Login
+    // if (!props.memberId){
+    //   navigate("LoginScreen");
+    // }
   }
 
   componentDidMount() {
