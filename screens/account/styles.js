@@ -65,6 +65,15 @@ const styles = StyleSheet.create({
   activeButton: {
     backgroundColor: color1,
     color: "#000"
+  },
+  textInput: {
+    backgroundColor: "#fff",
+    color: "#000",
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 10,
+    marginTop: 10,
+    fontFamily: "Advent Pro Regular"
   }
 });
 export default styles;

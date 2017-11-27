@@ -1,5 +1,5 @@
 export const titleText = {
-  //fontFamily: 'Barlow Condensed',
+  fontFamily: 'Advent Pro',
   fontSize: 20,
   fontWeight: 'bold',
   color: 'white',

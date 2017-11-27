@@ -1,7 +1,7 @@
 {
     "name": "GymAPP",
     "version": "0.0.0",
-    "description": "Gum app!",
+    "description": "Gym app!",
     "author": null,
     "license": "",
     "main": "node_modules/expo/AppEntry.js",
@@ -27,5 +27,10 @@
     },
     "devDependencies": {
         "jest-expo": "^21.0.0"
-    }
+    },
+    "rnpm": {
+        "assets": [
+        "./assets/fonts/adventpro-regular"
+        ]
+    },
 }

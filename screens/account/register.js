@@ -8,7 +8,9 @@ import Title from "../../components/Title";
 import pack from "../../package.json";
 import styles from "./styles";
 import TabControl from "./tab";
+
 import Members from "../../data/members";
+
 
 const Register = props => {
   const { handle, handleChange, handleForgot, tab, handleRegister } = props;
