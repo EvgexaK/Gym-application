@@ -18,7 +18,7 @@ const Login = props => {
   ) : (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-        <TabControl {...props} />
+        <TabControl />
         <Text style={styles.title}>Wellcome</Text>
         <Text>Wellcome</Text>
         <TextInput
@@ -48,20 +48,12 @@ const Account = props =>
   props.memberId ? <AccountPage /> : <Login {...props} />;
 
 Account.propTypes = {
-  handle: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleFogot: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handle: key => {
-    switch (key) {
-      case "login":
-        return dispatch({ type: "LOGIN" });
-      case "register":
-        return dispatch({ type: "REGISTER" });
-    }
-  },
+  handle: key => {},
   handleChange: () => {},
   handleFogot: () => {}
 });
