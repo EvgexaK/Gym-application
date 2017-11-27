@@ -20,9 +20,11 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     marginLeft: 32
   },
-  title:{},
-  sub:{},
-  row: {},
+  title: {},
+  sub: {},
+  row: {
+    flexDirection: "row"
+  },
   textInput: {
     backgroundColor: "#fff"
   },
@@ -44,7 +46,20 @@ const styles = StyleSheet.create({
     width: 100
   },
   button: {
-    backgroundColor: color2,
+    backgroundColor: '#2E9298',
+    borderRadius: 10,
+    padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25,
+
+    padding: 12,
+    fontSize: 20,
+    // backgroundColor: color2,
     color: "#fff"
   },
   activeButton: {

@@ -7,10 +7,13 @@ import registerForPushNotificationsAsync from "../api/registerForPushNotificatio
 
 import SingleExerciseScreen from "../screens/SingleExerciseScreen";
 import ExercisesScreen from "../screens/ExercisesScreen";
-import RegisterScreen from '../screens/account/register';
+import AccountScreen from '../screens/account/index';
 
 const RootStackNavigator = StackNavigator(
   {
+    RegisterScreen: {
+      screen: AccountScreen
+    },
     Main: {
       screen: MainTabNavigator
     },
@@ -19,9 +22,6 @@ const RootStackNavigator = StackNavigator(
     },
     ExercisesScreen: {
       screen: ExercisesScreen
-    },
-    RegisterScreen: {
-      screen: RegisterScreen
     }
   },
   {
