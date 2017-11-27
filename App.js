@@ -3,8 +3,9 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
-import Firebase from "./api/firebase";
-
+import Firebase from "./data/firebase";
+import { Provider } from "react-redux";
+import store from "./store";
 
 export default class App extends React.Component {
   state = {
@@ -12,7 +13,6 @@ export default class App extends React.Component {
   };
   constructor(props){
     super(props);
-    Firebase.initialise();
   }
 
   fetchState = async () => {
