@@ -1,27 +1,40 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import {connect} from 'react-redux';
 
-import Layout from '../constants/Layout';
-import Title from '../components/Title';
-import Box3 from '../components/Box3';
-import Input from '../components/Input';
-import * as Members from '../data/members';
+import Layout from '../../constants/Layout';
+import Title from '../../components/Title';
+import Box3 from '../../components/Box3';
+import Input from '../../components/Input';
+import * as Members from '../../data/members';
 
-const DEBUG = true;
+const DEBUG = false;
 
 class AccountPage extends React.Component {
-  state = { fields: {} };
+  state = {
+    fields: {},
+    isLoadingComplete: false
+  };
+  constructor(props) {
+    super(props);
+    const { navigate } = this.props.navigation;
+    // if !member go Login
+    if (!props.memberId){
+      navigate("LoginScreen");
+    }
+  }
+
   componentDidMount() {
-    const { id = 'id0' } = this.props;
-    DEBUG && console.log('fetch AccountPage data');
-    Members.getById(id).on('value', fields => {
-      DEBUG && console.log('fetched AccountPage data', fields.val());
+    const { id = "id0" } = this.props;
+    DEBUG && console.log("fetch AccountPage data");
+    Members.getById(id).on("value", fields => {
+      DEBUG && console.log("fetched AccountPage data", fields.val());
       this.setState({ fields: fields.val() });
     });
   }
 
   static navigationOptions = {
-    title: 'Account Page',
+    title: "Account Page"
   };
 
   handleChange = ({ name, value }) => {
@@ -31,7 +44,6 @@ class AccountPage extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     const { name, height, days, weight, email, phone, fb } = this.state.fields;
     return (
       <ScrollView>
@@ -117,4 +129,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountPage;
+export default connect(s => s.member)(AccountPage);
