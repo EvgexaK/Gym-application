@@ -67,7 +67,7 @@ class AccountPage extends React.Component {
         />
         <Input
           name="fb"
-          iconName="money"
+          iconName="facebook"
           label="FB"
           dafaultValue={fb}
           onChangeText={this.handleChange}
