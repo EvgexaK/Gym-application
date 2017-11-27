@@ -11,7 +11,7 @@ import TabControl from "./tab";
 import Members from "../../data/members";
 
 const Register = props => {
-  const { handle, handleChange, handleFogot, tab, handleRegister } = props;
+  const { handle, handleChange, handleForgot, tab, handleRegister } = props;
   const { name, email } = props.fields;
   return (
     <View style={styles.container}>
@@ -42,13 +42,13 @@ const Register = props => {
         <View style={styles.row}>
           <Text style={styles.label}>I am a:</Text>
           <Button
-            onPress={props.handleGay}
-            title="Gay"
+            onPress={props.handleBoy}
+            title="Man"
             style={styles.buttonActive}
           />
           <Button
             onPress={props.handleGirl}
-            title="Girl"
+            title="Woman"
             style={styles.buttonActive}
           />
         </View>
@@ -65,7 +65,7 @@ const Register = props => {
 
 Register.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  handleGay: PropTypes.func.isRequired,
+  handleBoy: PropTypes.func.isRequired,
   handleGirl: PropTypes.func.isRequired,
   handleRegister: PropTypes.func.isRequired
 };
@@ -73,7 +73,7 @@ Register.propTypes = {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleChange: ({ name, value }) =>
     dispatch({ type: "MEMBER_UPDATE", payload: { [name]: value } }),
-  handleGay: () => dispatch({ type: "MEMBER_UPDATE", payload: { sex: "m" } }),
+  handleBoy: () => dispatch({ type: "MEMBER_UPDATE", payload: { sex: "m" } }),
   handleGirl: () => dispatch({ type: "MEMBER_UPDATE", payload: { sex: "f" } }),
   handleRegister: fields => async () => {
     if (!fields.email || !fields.name || !fields.password) return;
