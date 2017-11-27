@@ -19,8 +19,8 @@ const Login = props => {
     <View style={styles.container}>
       <View style={styles.formContainer}>
         <TabControl />
-        <Text style={styles.title}>Wellcome</Text>
-        <Text>Wellcome</Text>
+        <Text style={styles.textTitle}>Wellcome</Text>
+        <Text style={styles.sub}>Wellcome</Text>
         <TextInput
           style={styles.textInput}
           name="email"

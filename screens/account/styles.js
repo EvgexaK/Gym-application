@@ -20,8 +20,17 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     marginLeft: 32
   },
-  title: {},
-  sub: {},
+  textTitle: {
+    fontSize: 30,
+    color: color1,
+    fontFamily: 'Advent Pro Regular',
+  },
+
+  sub: {
+    fontSize: 14,
+    color: color1,
+    fontFamily: 'Advent Pro Regular',
+  },
   row: {
     flexDirection: "row"
   },
@@ -56,7 +65,6 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 10,
     shadowOpacity: 0.25,
-
     padding: 12,
     fontSize: 20,
     // backgroundColor: color2,
