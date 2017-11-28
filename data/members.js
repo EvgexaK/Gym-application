@@ -20,7 +20,6 @@ export async function create(data) {
     member = await getById(id);
   };
   await saveById(id, data);
-  console.log({id, data})
   return getById(id);
 }
 
