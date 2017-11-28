@@ -1,35 +1,36 @@
-import { Notifications } from "expo";
-import React from "react";
-import { StackNavigator } from "react-navigation";
+import { Notifications } from 'expo';
+import React from 'react';
+import { StackNavigator } from 'react-navigation';
 
-import MainTabNavigator from "./MainTabNavigator";
-import registerForPushNotificationsAsync from "../api/registerForPushNotificationsAsync";
+import MainTabNavigator from './MainTabNavigator';
+import registerForPushNotificationsAsync
+  from '../api/registerForPushNotificationsAsync';
 
-import SingleExerciseScreen from "../screens/SingleExerciseScreen";
-import ExercisesScreen from "../screens/ExercisesScreen";
+import SingleExerciseScreen from '../screens/SingleExerciseScreen';
+import ExercisesScreen from '../screens/ExercisesScreen';
 import AccountScreen from '../screens/account/index';
 
 const RootStackNavigator = StackNavigator(
   {
-    RegisterScreen: {
-      screen: AccountScreen
-    },
     Main: {
-      screen: MainTabNavigator
+      screen: MainTabNavigator,
     },
     SingleExercise: {
-      screen: SingleExerciseScreen
+      screen: SingleExerciseScreen,
     },
     ExercisesScreen: {
-      screen: ExercisesScreen
-    }
+      screen: ExercisesScreen,
+    },
+    RegisterScreen: {
+      screen: AccountScreen,
+    },
   },
   {
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal"
-      }
-    })
+        fontWeight: 'normal',
+      },
+    }),
   }
 );
 
@@ -43,7 +44,7 @@ export default class RootNavigator extends React.Component {
   }
 
   render() {
-    return <RootStackNavigator {...this.props}/>;
+    return <RootStackNavigator {...this.props} />;
   }
 
   _registerForPushNotifications() {
