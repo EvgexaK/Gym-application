@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Layout from '../../constants/Layout';
 import Title from '../../components/Title';
@@ -13,38 +13,20 @@ const DEBUG = false;
 class AccountPage extends React.Component {
   state = {
     fields: {},
-    isLoadingComplete: false
+    isLoadingComplete: false,
   };
   constructor(props) {
     super(props);
-    // const { navigate } = props.navigation;
-    // // if !member go Login
-    // if (!props.memberId){
-    //   navigate("LoginScreen");
-    // }
-  }
-
-  componentDidMount() {
-    const { id = "id0" } = this.props;
-    DEBUG && console.log("fetch AccountPage data");
-    Members.getById(id).on("value", fields => {
-      DEBUG && console.log("fetched AccountPage data", fields.val());
-      this.setState({ fields: fields.val() });
-    });
+    props.fetchMember(props.memberId);
   }
 
   static navigationOptions = {
-    title: "Account Page"
-  };
-
-  handleChange = ({ name, value }) => {
-    const { fields } = this.state;
-    fields[name] = value;
-    this.setState({ fields });
+    title: 'Account Page',
   };
 
   render() {
-    const { name, height, days, weight, email, phone, fb } = this.state.fields;
+    const { name, height, days, weight, email, phone, fb } = this.props.fields;
+    const {handleChange} = this.props;
     return (
       <ScrollView>
         <Title title="Account" />
@@ -68,21 +50,21 @@ class AccountPage extends React.Component {
           iconName="envelope-o"
           label="Email"
           dafaultValue={email}
-          onChangeText={this.handleChange}
+          onChangeText={handleChange}
         />
         <Input
           name="phone"
           iconName="phone"
           label="Phone"
           dafaultValue={phone}
-          onChangeText={this.handleChange}
+          onChangeText={handleChange}
         />
         <Input
           name="fb"
           iconName="facebook"
           label="FB"
           dafaultValue={fb}
-          onChangeText={this.handleChange}
+          onChangeText={handleChange}
         />
         <View style={styles.aboutView}>
           <Text style={styles.aboutText}>About GYM</Text>
@@ -129,4 +111,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(s => s.member)(AccountPage);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleChange:  ({ name, value }) => {
+    const payload = {};
+    payload[name] = value;
+    dispatch({ type: 'MEMBER_UPDATE', payload });
+  },
+  fetchMember: async id => {
+    const payload = await Members.getById(id);
+    dispatch({ type: 'MEMBER_UPDATE', payload });
+  },
+});
+
+export default connect(s => s.member, mapDispatchToProps)(AccountPage);

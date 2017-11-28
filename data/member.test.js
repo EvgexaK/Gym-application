@@ -17,7 +17,7 @@ it('get members', async () => {
 
     const members = await MembersModel.all(memberId);
     expect.arrayContaining(members);
-    console.log(members);
+    // console.log(members);
     m = members[0];
   } catch (err){
     throw err;
@@ -36,7 +36,7 @@ it('get member by id', async () => {
 it('create new member', async () => {
   try{
     const member = await MembersModel.create(m);
-    console.log(member);
+    // console.log(member);
   } catch (err){
     throw err;
   }
