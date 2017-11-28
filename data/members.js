@@ -3,11 +3,12 @@ import uuidv1 from 'uuid/v1';
 import Db from './firebase.js';
 
 const tableName = 'Members';
+const Ref = Db.ref(`${tableName}`);
 
 export function all() {
   return new Promise((res, rej) => {
     try {
-      Db.ref(`${tableName}`).on('value', data => {
+      Ref.on('value', data => {
         const members = data.val();
         res(Object.keys(members).map(id => ({ ...members[id], id })));
       });
@@ -40,14 +41,11 @@ export async function saveById(id, member) {
   return getById(id);
 }
 
+
 export async function create(data) {
-  let id = uuidv1();
-  let member = await getById(id);
-  while (member) {
-    id = uuidv1();
-    member = await getById(id);
-  }
-  return  saveById(id, data);
+  const newMember = Ref.push();
+  await newMember.set(data);
+  return {...data, id: newMember.getKey()};
 }
 
 export function remove(id) {

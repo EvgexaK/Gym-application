@@ -6,10 +6,9 @@ import renderer from 'react-test-renderer';
 import MembersModel from './members';
 
 // let memberId = 'id';
-let m;
-let memberId = '0c3b0c50-d345-11e7-81bd-0b46042baf2a';
 
-const tmpMember = {
+let memberId = '0c3b0c50-d345-11e7-81bd-0b46042baf2a';
+let m = {
   name: 'test',
 };
 
@@ -18,6 +17,7 @@ it('get members', async () => {
 
     const members = await MembersModel.all(memberId);
     expect.arrayContaining(members);
+    console.log(members);
     m = members[0];
   } catch (err){
     throw err;
@@ -36,6 +36,7 @@ it('get member by id', async () => {
 it('create new member', async () => {
   try{
     const member = await MembersModel.create(m);
+    console.log(member);
   } catch (err){
     throw err;
   }
