@@ -10,8 +10,10 @@ import Library from "../screens/Library";
 import SettingsScreen from "../screens/SettingsScreen";
 import Account from "../screens/account/index";
 
+import TestScreen from '../screens/test';
 export default TabNavigator(
   {
+    // Test: { screen: TestScreen },
     Home: { screen: HomeScreen },
     Library: { screen: Library },
     Settings: { screen: SettingsScreen },
@@ -23,6 +25,10 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
+          case "Test":
+            (iconName = require("../assets/icons/Home.png")),
+              (focusedIconName = require("../assets/icons/HomeC.png"));
+            break;
           case "Home":
             (iconName = require("../assets/icons/Home.png")),
               (focusedIconName = require("../assets/icons/HomeC.png"));
