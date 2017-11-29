@@ -18,6 +18,9 @@ import ImageExercise from '../components/ImageExercise';
 import ImageExercise1 from '../components/ImageExercise1';
 import InputTest from '../components/InputTest';
 
+
+const remote = 'https://s15.postimg.org/tw2qkvmcb/400px.png';
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Home',
@@ -45,7 +48,6 @@ class HomeScreen extends React.Component {
           imageSource={require('../assets/images/start.png')}
           color={'#333333'}
         />
-
       </ScrollView>
     );
   }
