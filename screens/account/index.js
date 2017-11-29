@@ -45,7 +45,7 @@ const Login = props => {
 
 // create a component
 const Account = props =>
-  props.memberId ? <AccountPage /> : <Login {...props} />;
+  !props.memberId ? <AccountPage /> : <Login {...props} />;
 
 Account.propTypes = {
   handleChange: PropTypes.func.isRequired,

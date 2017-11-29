@@ -1,16 +1,14 @@
-import uuidv1 from 'uuid/v1';
-
 import Db from './firebase.js';
 
-const tableName = 'members';
+const tableName = 'exercises';
 const Ref = Db.ref(`${tableName}`);
 
 export function all() {
   return new Promise((res, rej) => {
     try {
       Ref.on('value', data => {
-        const members = data.val();
-        res(Object.keys(members).map(id => ({ ...members[id], id })));
+        const items = data.val();
+        res(Object.keys(items).map(id => ({ ...items[id], id })));
       });
     } catch (err) {
       rej(err);
@@ -34,18 +32,18 @@ export function getById(id) {
   });
 }
 
-export async function saveById(id, member) {
-  const data = { ...member };
+export async function saveById(id, tmp) {
+  const data = { ...tmp };
   delete data.id;
-  await Db.ref(`${tableName}/${id}`).set(member);
+  await Db.ref(`${tableName}/${id}`).set(data);
   return getById(id);
 }
 
 
 export async function create(data) {
-  const newMember = Ref.push();
-  await newMember.set(data);
-  return {...data, id: newMember.getKey()};
+  const newItem = Ref.push();
+  await newItem.set(data);
+  return {...data, id: newItem.getKey()};
 }
 
 export function remove(id) {

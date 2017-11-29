@@ -6,6 +6,7 @@ import RootNavigation from './navigation/RootNavigation';
 import Firebase from './data/firebase';
 import { Provider } from 'react-redux';
 import store from './store';
+import Exercise from './data/exercise';
 
 export default class App extends React.Component {
   state = {
@@ -21,6 +22,10 @@ export default class App extends React.Component {
     const memberId = await AsyncStorage.getItem('@Gyp-App:memberId');
     if (memberId) {
       store.dispatch({ type: 'MEMBER_FETCH', payload: { memberId } });
+    }
+    const exercises = await Exercise.all();
+    if (exercises) {
+      store.dispatch({ type: 'EXERCISE_FETCH', payload: { items: exercises } });
     }
   };
 

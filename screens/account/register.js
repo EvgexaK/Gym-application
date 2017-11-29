@@ -72,15 +72,19 @@ Register.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+
   handleChange: ({ name, value }) =>
     dispatch({ type: 'MEMBER_UPDATE', payload: { [name]: value } }),
+
   handleBoy: () => dispatch({ type: 'MEMBER_UPDATE', payload: { sex: 'm' } }),
+
   handleGirl: () => dispatch({ type: 'MEMBER_UPDATE', payload: { sex: 'f' } }),
+
   handleRegister: fields => async () => {
     if (!fields.email || !fields.name || !fields.password) return;
     const member = await Members.create(fields);
     if (member) {
-      console.log(member);
+      // console.log(member);
       dispatch({ type: 'MEMBER_FETCH', payload: { memberId: member.id } });
       await AsyncStorage.setItem('@Gyp-App:memberId', member.id);
     }
