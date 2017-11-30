@@ -17,7 +17,7 @@ import TestScreen from '../screens/test';
 
 const RootStackNavigator = StackNavigator(
   {
-    // Test: { screen: TestScreen },
+    Test: { screen: TestScreen },
     Main: {
       screen: MainTabNavigator,
     },

@@ -30,7 +30,7 @@
     },
     "rnpm": {
         "assets": [
-        "./assets/fonts/adventpro-regular"
+            "./assets/fonts/adventpro-regular"
         ]
     }
 }
