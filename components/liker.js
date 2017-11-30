@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 const Liker = props => {
   return (<FontAwesome
     onPress={props.handleLikeToggle}
-    name='fa-heart'
+    name='heart'
     size={70}
     style={{
       position: 'absolute',
