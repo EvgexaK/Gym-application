@@ -13,11 +13,11 @@ import ExercisesScreen from '../screens/exercise/exercises';
 import ExerciseScreen from '../screens/exercise/index';
 
 import AccountScreen from '../screens/account/index';
-import TestScreen from '../screens/test';
+import TestScreen from '../screens/account/main';
 
 const RootStackNavigator = StackNavigator(
   {
-    Test: { screen: TestScreen },
+    // Test: { screen: TestScreen },
     Main: {
       screen: MainTabNavigator,
     },

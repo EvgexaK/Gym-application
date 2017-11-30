@@ -3,18 +3,14 @@ import PropTypes from 'prop-types';
 
 import { ScrollView } from 'react-native';
 
-
-
 import Liker from '../components/liker';
-
-
 
 handle = e => console.log(e);
 
 const Test = props => {
   return (
     <ScrollView vertical>
-      <Liker handle={handle}/>
+      <Liker id="test" handleLikeToggle={handle} isLike={true}/>
     </ScrollView>
   );
 };

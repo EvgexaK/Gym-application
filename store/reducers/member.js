@@ -5,7 +5,9 @@ const State = {
     name: '',
     email: '',
   },
-  execs: ['id1'],
+  execs: [
+  // 'id1'
+  ],
 };
 
 function fields(state, action) {
