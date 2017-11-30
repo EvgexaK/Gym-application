@@ -7,14 +7,14 @@ import AccountPage from "./main";
 import Title from "../../components/Title";
 import styles from "./styles";
 
-import Register from "./register";
+import Form from "./form";
 import TabControl from "./tab";
 
 import pack from "../../package.json";
 const Login = props => {
   const { handle, handleChange, handleFogot, tab } = props;
   return tab === "register" ? (
-    <Register />
+    <Form />
   ) : (
     <View style={styles.container}>
       <View style={styles.formContainer}>
@@ -35,13 +35,18 @@ const Login = props => {
           onChangeText={handleChange}
         />
         <Button onPress={handle} title="Login" style={styles.activeButton} />
-        <Text style={styles.textFogot} onPress={handleFogot}>
-          fogot you password?
-        </Text>
+
       </View>
     </View>
   );
 };
+
+/*
+<Text style={styles.textFogot} onPress={handleFogot}>
+  fogot you password?
+</Text>
+ */
+
 
 // create a component
 const Account = props =>
