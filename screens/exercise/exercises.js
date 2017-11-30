@@ -5,7 +5,7 @@ import { ScrollView, FlatList } from 'react-native';
 
 import ImageExercise from '../../components/ImageExercise';
 
-const Row = props => {
+export const Row = props => {
   const { navigate } = props;
   const { id, name, type, description, img } = props.item;
   return (
