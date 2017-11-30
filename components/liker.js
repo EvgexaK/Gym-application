@@ -1,8 +1,14 @@
 import React from 'react';
-import { Text,  } from 'react-native';
+import PropTypes from "prop-types";
+import { Text } from 'react-native';
 
 const Liker = props => {
-  return (<Text>[like]</Text>);
+  return <Text onPress={props.handleLikeToggle}>[like]</Text>;
+};
+
+Liker.propTypes = {
+  isLike: PropTypes.bool.isRequired,
+  handleLikeToggle: PropTypes.func.isRequired,
 };
 
 export default Liker;

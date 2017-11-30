@@ -16,7 +16,7 @@ const Row = props => {
       color={'#F2C94C'}
       description={description}
       imageSource={img}
-      handlePress={() => navigate('Exercise', props)}
+      handlePress={() => navigate('Exercise', { id, name, type, description, img })}
     />
   );
 };
@@ -31,7 +31,7 @@ const Exercises = props => {
         horizontal
         data={data}
         renderItem={item => (
-          <Row key={item.id} item={item} navigate={navigate} />
+          <Row key={item.id} {...item} navigate={navigate} />
         )}
       />
     </ScrollView>
