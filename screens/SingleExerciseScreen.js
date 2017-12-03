@@ -7,18 +7,27 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-
-class MenuItem extends Component {
+import Layout from '../constants/Layout'
+class SingleExerciseScreen extends Component {
   static navigationOptions = {
-    title: 'Choose your training:',
+    title: 'Exercises',
   };
   render() {
     return (
       <ScrollView vertical>
-        <Image source={require('../assets/images/abs.png')} />
-        <Image source={require('../assets/images/triceps.png')} />
-        <Image source={require('../assets/images/situps.png')} />
-        <Image source={require('../assets/images/pushups.png')} />
+        
+        <TouchableOpacity style={{flex: 1}}
+        onPress={() => this.props.navigation.navigate('ListOfExercises', { muscle: "body"})}>
+        <Image style={styles.img} source={require('../assets/images/myBody.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity style={{flex: 1}}
+        onPress={() => this.props.navigation.navigate('ListOfExercises', { muscle: "arm"})}>
+        <Image style={styles.img} source={require('../assets/images/myArm.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity style={{flex: 1}}
+        onPress={() => this.props.navigation.navigate('ListOfExercises', { muscle: "legs"})}>
+        <Image style={styles.img} source={require('../assets/images/myLegs.png')} />
+        </TouchableOpacity>
       </ScrollView>
     );
   }
@@ -57,6 +66,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     width: 100,
   },
+  img : {
+    width: Layout.window.width,
+    height: Layout.window.height * 0.30
+  }
 });
 
-export default MenuItem;
+export default SingleExerciseScreen;

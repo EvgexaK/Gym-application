@@ -13,11 +13,10 @@ import Layout from '../constants/Layout';
 import Database from '../api/database';
 
 // Importing Menu Item components that we have created
-import MenuItem from '../components/MenuItem';
 import ImageExercise from '../components/ImageExercise';
 import InputTest from '../components/InputTest';
 
-export default class ExerciseScreen extends React.Component {
+export default class ListOfExercises extends React.Component {
   static navigationOptions = {
     title: 'Exercises',
   };
@@ -29,46 +28,63 @@ export default class ExerciseScreen extends React.Component {
     this.handlePress = this.handlePress.bind(this);
   }
 
+  filterExercises() {
+    return Object.values(this.state.exercises).filter((exercise) => {
+      return exercise.muscle === this.props.navigation.state.params.muscle
+    })
+  }
+
   componentDidMount() {
-    Database.getExercises(exercises => {
+    Database.getExercises( (exercises) => {
       this.setState({
-        exercises: exercises,
-      });
+        exercises: exercises
+      }, () => {
+        var newExercises = this.filterExercises()
+        this.setState({ filteredExercises: newExercises })
+      })
     });
   }
 
-  handlePress(name, description, type) {
-    console.log(type);
-    this.props.navigation.navigate('SingleExercise', {
+  handlePress(name, desc, muscle, img) {
+    this.props.navigation.navigate('ExerciseItem', {
       name: name,
-      description: description,
-      type: type,
+      desc: desc,
+      muscle: muscle,
+      img: img
     });
   }
 
   render() {
     const { navigate } = this.props.navigation;
+    if(this.state.filteredExercises) {
     return (
       <ScrollView>
         <FlatList
           horizontal
-          data={Object.values(this.state.exercises)}
+          data={this.state.filteredExercises}
           renderItem={({ item }) => (
             <ImageExercise
               title={item.name}
+              muscle={item.muscle}
               id={item.name}
               type={item.type}
               handlePress={() => {
-                this.handlePress(item.name, item.description, item.type);
+                this.handlePress(item.name, item.desc, item.muscle, item.img);
               }}
-              description={item.description}
+              desc={item.desc}
               imageSource={item.img}
               color={'#F2C94C'}
             />
           )}
         />
       </ScrollView>
-    );
+    ); }
+    else {
+      return (
+        <View>
+          <Text>Loading...</Text>
+        </View>)
+    }
   }
 }
 

@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Layout from '../constants/Layout';
 
-class MenuItem extends Component {
-  // componentWillMount() {
-  //   // console.log(this.props.imageSource);
-  // }
+class ImageExercise extends Component {
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -18,15 +16,14 @@ class MenuItem extends Component {
         }}
       >
         <View style={[styles.container, { backgroundColor: this.props.color }]}>
-          <View style={styles.imageContainer}>
+        <Text style={styles.title}>{this.props.title}</Text>
             <Image
               style={styles.image}
               source={{ uri: this.props.imageSource }}
             />
-          </View>
           <View>
-            <Text style={styles.title}>{this.props.title}</Text>
-            <Text style={styles.description}>{this.props.description}</Text>
+            
+            
 
           </View>
         </View>
@@ -38,9 +35,10 @@ class MenuItem extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: 300,
-    height: 420,
-    flexDirection: 'row',
+    width: 250,
+    height: 400,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
     borderColor: '#808080',
     backgroundColor: '#F2C94C',
     borderWidth: 1,
@@ -59,10 +57,13 @@ const styles = StyleSheet.create({
     width: 234,
     height: 234,
     marginTop: 100,
+    resizeMode: 'contain'
   },
   title: {
     fontWeight: '500',
     fontSize: 20,
+    color: '#fff',
+    marginTop: 16
   },
   description: {
     fontSize: 16,
@@ -70,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MenuItem;
+export default ImageExercise;

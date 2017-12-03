@@ -7,7 +7,8 @@ import registerForPushNotificationsAsync
   from '../api/registerForPushNotificationsAsync';
 
 import SingleExerciseScreen from '../screens/SingleExerciseScreen';
-// import ExercisesScreen from '../screens/ExercisesScreen';
+import ListOfExercises from '../screens/ListOfExercises';
+import MachinesScreen from '../screens/MachinesScreen';
 
 import ExercisesScreen from '../screens/exercise/exercises';
 import ExerciseScreen from '../screens/exercise/index';
@@ -15,6 +16,7 @@ import ExerciseScreen from '../screens/exercise/index';
 import AccountScreen from '../screens/account/index';
 import TestScreen from '../screens/account/main';
 
+import ExerciseItem from '../components/ExerciseItem'
 const RootStackNavigator = StackNavigator(
   {
     // Test: { screen: TestScreen },
@@ -27,11 +29,20 @@ const RootStackNavigator = StackNavigator(
     ExercisesScreen: {
       screen: ExercisesScreen,
     },
+    ListOfExercises: {
+      screen: ListOfExercises
+    },
     RegisterScreen: {
       screen: AccountScreen,
     },
     Exercise:{
        screen: ExerciseScreen,
+    },
+    ExerciseItem:{
+      screen: ExerciseItem
+    },
+    Machines: {
+      screen: MachinesScreen
     }
   },
   {

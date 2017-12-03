@@ -10,11 +10,11 @@ export default class Library extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity style={{flex: 1}}
-        onPress={() => this.props.navigation.navigate('ExercisesScreen', { name: "Benchpress"})}>
+        onPress={() => this.props.navigation.navigate('SingleExercise', { name: "Benchpress"})}>
         <Image style={styles.img} source={require('../assets/images/exercises.png')} />
         </TouchableOpacity>
         <TouchableOpacity style={{flex: 1}}
-        onPress={() => this.props.navigation.navigate('SingleExercise', { name: "Benchpress"})}>
+        onPress={() => this.props.navigation.navigate('Machines', { name: "Benchpress"})}>
         <Image style={styles.img} source={require('../assets/images/machines.png')} />
         </TouchableOpacity>
       </View>
@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
   },
   img : {
     width: Layout.window.width,
-    height: Layout.window.height * 0.45
+    height: Layout.window.height * 0.46
   }
 });
