@@ -69,6 +69,7 @@ export default class App extends React.Component {
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         'Advent Pro': require('./assets/fonts/adventpro-medium.ttf'),
         'Advent Pro Regular': require('./assets/fonts/adventpro-regular.ttf'),
+        'Advent Pro Bold': require('./assets/fonts/adventpro-bold.ttf'),
       }),
     ]);
   };
