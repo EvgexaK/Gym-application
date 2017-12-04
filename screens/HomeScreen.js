@@ -35,11 +35,7 @@ class HomeScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    return (
-        <Image
-          source={require('../assets/images/ImageThumbnail.png')}
-        />    
-    );
+    return <Image source={require('../assets/images/ImageThumbnail.png')} />;
   }
 }
 
