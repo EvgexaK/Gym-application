@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "project1",
+    "name": "GymAPP",
     "description": "No description",
-    "slug": "project1",
+    "slug": "GymAPP",
     "privacy": "public",
-    "sdkVersion": "21.0.0",
+    "sdkVersion": "23.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#F2C94C",
