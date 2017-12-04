@@ -12,7 +12,9 @@ import RootNavigation from './navigation/RootNavigation';
 import Firebase from './data/firebase';
 import { Provider } from 'react-redux';
 import store from './store';
+
 import Exercise from './data/exercise';
+import Equipment from './data/equipment';
 
 export default class App extends React.Component {
   state = {
@@ -32,6 +34,14 @@ export default class App extends React.Component {
     const exercises = await Exercise.all();
     if (exercises) {
       store.dispatch({ type: 'EXERCISE_FETCH', payload: { items: exercises } });
+    }
+    // get Equipments
+    const equipments = await Equipment.all();
+    if (equipments) {
+      store.dispatch({
+        type: 'EQUIPMENT_FETCH',
+        payload: { items: equipments },
+      });
     }
   };
 
