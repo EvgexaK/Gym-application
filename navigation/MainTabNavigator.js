@@ -8,7 +8,7 @@ import Colors from "../constants/Colors";
 import HomeScreen from "../screens/home/index";
 import Library from "../screens/Library";
 import SettingsScreen from "../screens/SettingsScreen";
-import Account from "../screens/account/index";
+import Account from "../screens/account/tabs";
 
 
 export default TabNavigator(

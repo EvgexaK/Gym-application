@@ -10,19 +10,15 @@ const TabControl = props => {
   const { handle, tab } = props;
 
   const loginStyle =
-    tab === "login"
-      ? [styles.button, styles.activeButton]
-      : [styles.button];
+    tab === "login" ? [styles.button, styles.activeButton] : [styles.button];
   const registerStyle =
-    tab === "register"
-      ? [styles.button, styles.activeButton]
-      : [styles.button];
+    tab === "register" ? [styles.button, styles.activeButton] : [styles.button];
   return (
     <View style={styles.row}>
       <Button style={loginStyle} onPress={() => handle("login")}>
         Login
       </Button>
-      <Button style={registerStyle} onPress={() => handle("register")} >
+      <Button style={registerStyle} onPress={() => handle("register")}>
         Register
       </Button>
     </View>
@@ -31,9 +27,8 @@ const TabControl = props => {
 
 TabControl.propTypes = {
   handle: PropTypes.func.isRequired,
-  tab:  PropTypes.string.isRequired,
+  tab: PropTypes.string.isRequired
 };
-
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handle: key => {
@@ -43,7 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       case "register":
         return dispatch({ type: "REGISTER" });
     }
-  },
+  }
 });
 
 export default connect(s => s.member, mapDispatchToProps)(TabControl);

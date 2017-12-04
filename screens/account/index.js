@@ -7,38 +7,35 @@ import AccountPage from "./main";
 import Title from "../../components/Title";
 import styles from "./styles";
 
-import Form from "./form";
+import Register from "./register";
 import TabControl from "./tab";
 
 import pack from "../../package.json";
 const Login = props => {
   const { handle, handleChange, handleFogot, tab } = props;
-  return tab === "register" ? (
-    <Form />
-  ) : (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <TabControl />
-        <Text style={styles.textTitle}>Wellcome</Text>
-        <Text style={styles.sub}>Wellcome</Text>
-        <TextInput
-          style={styles.textInput}
-          name="email"
-          placeholder="Enter you email address."
-          onChangeText={handleChange}
-          value={props.username}
-        />
-        <TextInput
-          style={styles.textInput}
-          name="password"
-          placeholder="Enter you password."
-          onChangeText={handleChange}
-        />
-        <Button onPress={handle} title="Login" style={styles.activeButton} />
-
-      </View>
-    </View>
-  );
+  return tab === "register"
+    ? <Register />
+    : <View style={styles.container}>
+        <View style={styles.formContainer}>
+          <TabControl />
+          <Text style={styles.textTitle}>Wellcome</Text>
+          <Text style={styles.sub}>Wellcome</Text>
+          <TextInput
+            style={styles.textInput}
+            name="email"
+            placeholder="Enter you email address."
+            onChangeText={handleChange}
+            value={props.username}
+          />
+          <TextInput
+            style={styles.textInput}
+            name="password"
+            placeholder="Enter you password."
+            onChangeText={handleChange}
+          />
+          <Button onPress={handle} title="Login" style={styles.activeButton} />
+        </View>
+      </View>;
 };
 
 /*
@@ -46,7 +43,6 @@ const Login = props => {
   fogot you password?
 </Text>
  */
-
 
 // create a component
 const Account = props =>

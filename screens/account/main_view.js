@@ -7,6 +7,7 @@ import Title from "../../components/Title";
 import Box3 from "../../components/Box3";
 import Input from "../../components/Input";
 import * as Members from "../../data/members";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const DEBUG = false;
 
@@ -27,7 +28,7 @@ class AccountPage extends React.Component {
   render() {
     const { name, height, days, weight, email, phone, fb } = this.props.fields;
     const { handleChange } = this.props;
-    // const VectorIcons = {MaterialCommunityIcons};
+    const VectorIcons = { MaterialCommunityIcons };
 
     const VectorIcon = ({ groupName, name, size, style }) => {
       let Icon = VectorIcons[groupName];
@@ -77,8 +78,11 @@ class AccountPage extends React.Component {
           name="email"
           iconName="envelope-o"
           label="Email"
-          dafaultValue={email}
+          dafaultValue={"isuslov@me.com"}
           onChangeText={handleChange}
+          editable={false}
+          selectTextOnFocus={false}
+          c
         />
         <Input
           name="phone"

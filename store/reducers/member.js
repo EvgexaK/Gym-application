@@ -1,6 +1,6 @@
 const State = {
   v: '0.0.1',
-  tab: 'login',
+  activeTab: "Login",
   fields: {
     name: '',
     email: '',
@@ -28,10 +28,8 @@ export default function member(state = State, action) {
         ...state,
         execs: state.execs.filter(v => v !== action.payload),
       };
-    case 'LOGIN':
-      return { ...state, tab: 'login' };
-    case 'REGISTER':
-      return { ...state, tab: 'register' };
+    case "ACTIVE_TAB":
+      return { ...state, activeTab: action.payload };
     case 'MEMBER_UPDATE':
       return { ...state, fields: fields(state.fields, action) };
     case 'MEMBER_FETCH':
