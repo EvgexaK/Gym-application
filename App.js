@@ -27,6 +27,7 @@ export default class App extends React.Component {
     this.fetchState();
 
     fb.auth().onAuthStateChanged(async fbUser => {
+      console.log(fbUser);
       let fields = await Members.getById(fbUser.uid);
       if (!fields) {
         fields = await Members.saveById(fbUser.uid, {

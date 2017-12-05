@@ -76,6 +76,7 @@ class AccountPage extends React.Component {
 
   render() {
     const { handleChange } = this.props;
+    console.log(this.props.fields);
     const { displayName, email, phone, height, weight } = this.props.fields;
     // const VectorIcons = {MaterialCommunityIcons};
 
@@ -86,7 +87,6 @@ class AccountPage extends React.Component {
 
     return (
       <ScrollView>
-        <Title title="Account" />
         <View style={styles.row}>
           <View style={styles.box}>
             <Text style={styles.textLabel}>Wellcome</Text>
@@ -108,14 +108,14 @@ class AccountPage extends React.Component {
         />
 
         <Input
-          name="Height"
+          name="height"
           VectorIcon
           label="Height"
           dafaultValue={height}
           onChangeText={handleChange}
         />
         <Input
-          name="Weight"
+          name="weight"
           VectorIcon
           label="weight"
           dafaultValue={weight}

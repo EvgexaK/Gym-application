@@ -15,6 +15,9 @@ const AccountScreen = props => {
   // const AccountView = props.edit ? <SettingsEdit /> :  <SettingsView />;
   return props.fbUser ? <SettingsEdit /> : <Tabs />;
 };
+AccountScreen.navigationOptions = {
+  title: 'Account',
+};
 
 AccountScreen.propTypes = {};
 
