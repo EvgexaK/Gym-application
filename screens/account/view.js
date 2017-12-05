@@ -37,7 +37,6 @@ class AccountPage extends React.Component {
 
     return (
       <ScrollView>
-        <Title title="Account" />
         <View style={styles.row}>
           <View style={styles.box}>
             <Text style={styles.textLabel}>Wellcome</Text>
