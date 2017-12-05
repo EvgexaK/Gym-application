@@ -49,7 +49,20 @@ class AccountPage extends React.Component {
             <Text style={styles.textLabel1}>Nice day!</Text>
           </View>
         </View>
-
+        <View style={styles.row}>
+           <View style={styles.box}>
+            <Text>Height</Text>
+            <Text>{height}</Text>
+           </View>
+           <View style={styles.box}>
+            <Text>Days in Gym</Text>
+            <Text>{height}</Text>
+           </View>
+           <View style={styles.box}>
+            <Text>Weight</Text>
+            <Text>{weight}</Text>
+           </View>
+        </View>
         <Input
           name="Days in Gym"
           iconName="calendar-o"

@@ -59,7 +59,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   handleChange: ({ name, value }) => State[name] = value,
   handleLogin: async () => {
     if (!State.email || !State.password) return;
-
     fb
       .auth()
       .signInWithEmailAndPassword(State.email, State.password)
