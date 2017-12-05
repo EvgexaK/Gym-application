@@ -1,93 +1,158 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { connect } from "react-redux";
 
-import { AsyncStorage, View, Text, TextInput, StyleSheet, Button } from 'react-native';
-import Title from '../../components/Title';
+import Layout from "../../constants/Layout";
+import Title from "../../components/Title";
+import Box3 from "../../components/Box3";
+import Input from "../../components/Input";
+import * as Members from "../../data/members";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import pack from '../../package.json';
-import styles from './styles';
-import TabControl from './tab';
+const DEBUG = false;
 
-import Members from '../../data/members';
+class AccountPage extends React.Component {
+  state = {
+    fields: {},
+    isLoadingComplete: false
+  };
+  constructor(props) {
+    super(props);
+    props.fetchMember(props.memberId);
+  }
 
-const Register = props => {
-  const { handle, handleChange, handleForgot, tab, handleRegister } = props;
-  const { name, email } = props.fields;
-  return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <TabControl {...props} />
-        <Text style={styles.title}>Hello!</Text>
-        <Text style={styles.sub}>we just need know somthing about you</Text>
-        <TextInput
-          style={styles.textInput}
-          name="name"
-          placeholder="How can I call you?"
-          onChangeText={value => handleChange({ value, name: 'name' })}
-          value={name}
-        />
-        <TextInput
-          style={styles.textInput}
-          name="email"
-          placeholder="Enter you email address."
-          onChangeText={value => handleChange({ value, name: 'email' })}
-          value={email}
-        />
-        <TextInput
-          style={styles.textInput}
-          name="password"
-          placeholder="Enter you password."
-          onChangeText={value => handleChange({ value, name: 'password' })}
-        />
+  static navigationOptions = {
+    title: "Account Page"
+  };
+
+  render() {
+    const { name, height, days, weight, email, phone, fb } = this.props.fields;
+    const { handleChange } = this.props;
+    const VectorIcons = { MaterialCommunityIcons };
+
+    const VectorIcon = ({ groupName, name, size, style }) => {
+      let Icon = VectorIcons[groupName];
+      return <Icon name={name} size={size} style={style} />;
+    };
+
+    return (
+      <ScrollView>
+        <Title title="Account" />
         <View style={styles.row}>
-          <Text style={styles.label}>I am a:</Text>
-          <Button
-            onPress={props.handleBoy}
-            title="Man"
-            style={styles.buttonActive}
-          />
-          <Button
-            onPress={props.handleGirl}
-            title="Woman"
-            style={styles.buttonActive}
-          />
+          <View style={styles.box}>
+            <Text style={styles.textLabel}>Wellcome</Text>
+            <Text style={styles.textLabel1}>
+              {name}
+            </Text>
+          </View>
+          <View style={styles.box}>
+            <Text style={styles.textLabel}>Have a</Text>
+            <Text style={styles.textLabel1}>Nice day!</Text>
+          </View>
         </View>
-        <Text style={styles.title}>Ready?</Text>
-        <Button
-          onPress={handleRegister(props.fields)}
-          title="Yes!"
-          style={styles.activeButton}
-        />
-      </View>
-    </View>
-  );
-};
 
-Register.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleBoy: PropTypes.func.isRequired,
-  handleGirl: PropTypes.func.isRequired,
-  handleRegister: PropTypes.func.isRequired,
-};
+        <Input
+          name="Days in Gym"
+          iconName="calendar-o"
+          label="Days in Gym"
+          dafaultValue={days}
+          onChangeText={handleChange}
+        />
+        <Input
+          name="Height"
+          VectorIcon
+          Name="man"
+          label="Height"
+          dafaultValue={height}
+          onChangeText={handleChange}
+        />
+        <Input
+          name="Weight"
+          VectorIcon
+          Name="weight-kilogram"
+          label="Weight"
+          dafaultValue={weight}
+          onChangeText={handleChange}
+        />
+        <Input
+          name="email"
+          iconName="envelope-o"
+          label="Email"
+          dafaultValue={"isuslov@me.com"}
+          onChangeText={handleChange}
+          editable={false}
+          selectTextOnFocus={false}
+          c
+        />
+        <Input
+          name="phone"
+          iconName="phone"
+          label="Phone"
+          dafaultValue={phone}
+          onChangeText={handleChange}
+        />
+        <Input
+          name="fb"
+          iconName="facebook"
+          label="FB"
+          dafaultValue={fb}
+          onChangeText={handleChange}
+        />
+        <View style={styles.aboutView}>
+          <Text style={styles.aboutText}>About GYM</Text>
+        </View>
+      </ScrollView>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    height: 50
+  },
+  box: {
+    height: 50,
+    width: "50%",
+    backgroundColor: "black"
+  },
+  textLabel: {
+    color: "white",
+    textAlign: "center"
+  },
+  textLabel1: {
+    color: "white",
+    textAlign: "center"
+  },
+  aboutView: {
+    height: 64,
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
+    // borderTopLeftRadius: 16,
+    // borderTopRightRadius: 16,
+
+    backgroundColor: "#262626",
+    padding: 16,
+    marginLeft: 32,
+    marginRight: 32
+  },
+  aboutText: {
+    color: "#E9B52F",
+    fontSize: 32,
+    textAlign: "center"
+  }
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-
-  handleChange: ({ name, value }) =>
-    dispatch({ type: 'MEMBER_UPDATE', payload: { [name]: value } }),
-
-  handleBoy: () => dispatch({ type: 'MEMBER_UPDATE', payload: { sex: 'm' } }),
-
-  handleGirl: () => dispatch({ type: 'MEMBER_UPDATE', payload: { sex: 'f' } }),
-
-  handleRegister: fields => async () => {
-    if (!fields.email || !fields.name || !fields.password) return;
-    const member = await Members.create(fields);
-    if (member) {
-      // console.log(member);
-      dispatch({ type: 'MEMBER_FETCH', payload: { memberId: member.id } });
-      await AsyncStorage.setItem('@Gyp-App:memberId', member.id);
-    }
+  handleChange: ({ name, value }) => {
+    const payload = {};
+    payload[name] = value;
+    dispatch({ type: "MEMBER_UPDATE", payload });
   },
+  fetchMember: async id => {
+    const payload = await Members.getById(id);
+    dispatch({ type: "MEMBER_UPDATE", payload });
+  }
 });
-export default connect(s => s.member, mapDispatchToProps)(Register);
+
+export default connect(s => s.member, mapDispatchToProps)(AccountPage);

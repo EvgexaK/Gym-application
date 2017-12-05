@@ -37,18 +37,17 @@ const styles = StyleSheet.create({
   textLabel: {},
   viewInput: {
     height: 48,
-    width: 200,
+    // width: 200,
+    flex:1,
     padding: 11
   },
   textInput: {
+    flex:1,
     height: 24,
     borderColor: "gray",
     borderWidth: 1,
     backgroundColor: "white",
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
+    borderRadius: 12,
     paddingLeft: 12,
     paddingRight: 12
   }
@@ -62,11 +61,9 @@ const Input = props => {
         <View style={styles.icon}>
           <FontAwesome name={iconName} size={16} />
         </View>
-        <View style={styles.viewLabel}>
-          <Text style={styles.textLabel}>{label}</Text>
-        </View>
         <View style={styles.viewInput}>
           <TextInput
+            placeholder={label}
             style={styles.textInput}
             value={dafaultValue}
             onChangeText={value =>
