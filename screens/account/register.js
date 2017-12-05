@@ -8,9 +8,8 @@ import Title from '../../components/Title';
 
 import pack from '../../package.json';
 import styles from './styles';
-import TabControl from './tab';
 
-import Members from '../../data/members';
+import { fb } from '../../data/firebase';
 
 //       <Text style={styles.textTitle}>Hello!</Text>
 const Register = props => {
@@ -125,12 +124,25 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
   handleRegister: fields => async () => {
     if (!fields.email || !fields.name || !fields.password) return;
-    const member = await Members.create(fields);
-    if (member) {
-      // console.log(member);
-      dispatch({ type: 'MEMBER_FETCH', payload: { memberId: member.id } });
-      await AsyncStorage.setItem('@Gyp-App:memberId', member.id);
-    }
+    // const member = await Members.create(fields);
+    // if (member) {
+    // console.log(member);
+    fb
+      .auth()
+      .createUserWithEmailAndPassword(fields.email, fields.password)
+      .catch(error => {
+        // @todo: onError
+        console.log(error);
+      })
+      .then(user => {
+        if (user) {
+          user.updateProfile({
+            displayName: fields.name,
+          });
+        }
+      });
+    // dispatch({ type: 'MEMBER_FETCH', payload: { memberId: member.id } });
+    // await AsyncStorage.setItem('@Gyp-App:memberId', member.id);
   },
 });
 export default connect(s => s.member, mapDispatchToProps)(Register);
