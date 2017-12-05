@@ -147,7 +147,7 @@ class AccountPage extends React.Component {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleChange: ({ name, value }) => {
     dispatch({
-      type: 'MEMBER_UPDATE',
+      type: 'MEMBER_UPDATE_SAVE',
       payload: { [name]: value },
     });
   },
