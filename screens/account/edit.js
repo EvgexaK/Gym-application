@@ -7,7 +7,7 @@ import Title from '../../components/Title';
 import Box3 from '../../components/Box3';
 import Input from '../../components/Input';
 import * as Members from '../../data/members';
-import {fb} from '../../data/firebase';
+import { fb } from '../../data/firebase';
 
 const DEBUG = false;
 
@@ -48,14 +48,12 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const serialise = user => {
   const res = {};
-  if(user){
+  if (user) {
     res.displayName = user.displayName || '';
     res.email = user.email || '';
     res.phone = user.phone || '';
-
   }
   return res;
 };
@@ -75,15 +73,24 @@ class AccountPage extends React.Component {
     title: 'Account Page',
   };
 
+  handleChange = ({name, value}) => {
+    this.setState({
+      fields: {
+        ...this.state.fields,
+        [name]: value,
+      },
+    });
+    this.props.handleChange({
+      fbUser: this.props.fbUser,
+      name, value,
+    });
+  };
+
   render() {
-    // console.log({state: this.state});
-    // const { name } = serialise(this.props.fbUser);
-    // console.log('fbUser :', this.props.fbUser);
-    // console.log(serialise(this.props.fbUser));
-    const {displayName, email, phone} = this.state.fields;
+    const {handleChange} = this;
+    const { displayName, email, phone } = this.state.fields;
     //
     const { height, days, weight, fb } = this.props.fields;
-    const { handleChange } = this.props;
     // const VectorIcons = {MaterialCommunityIcons};
 
     const VectorIcon = ({ groupName, name, size, style }) => {
@@ -111,7 +118,7 @@ class AccountPage extends React.Component {
           VectorIcon
           label="Display Name"
           dafaultValue={displayName}
-          onChangeText={handleChange(this.props.fbUser)}
+          onChangeText={handleChange}
         />
 
         <Input
@@ -152,14 +159,8 @@ class AccountPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleChange: user => ({ name, value }) => {
-    // console.log(user);
-    if(user){
-      user.updateProfile({[name]:value});
-    }
-    // const payload = {};
-    // payload[name] = value;
-    // dispatch({ type: 'MEMBER_UPDATE', payload });
+  handleChange: ({ fbUser, name, value }) => {
+    fbUser.updateProfile({[name]:value});
   },
   fetchMember: async id => {
     const payload = await Members.getById(id);
