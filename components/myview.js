@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
 });
 
 const MyView = props => {
-  console.log(props);
   const { iconName, label, value } = props;
   return (
     <View style={styles.row}>

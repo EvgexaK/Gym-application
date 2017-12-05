@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   textLabel: {
     color: 'white',
     textAlign: 'center',
+    fontSize:24,
   },
   textLabel1: {
     color: 'white',

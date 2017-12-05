@@ -11,10 +11,7 @@ import * as Members from '../../data/members';
 import MaterialCommunityIcons
   from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const DEBUG = false;
-
 const AccountPage = props => {
-  console.log(props);
   const { name, height, days, weight, email, phone } = props.fields;
   const { handleChange } = props;
   const VectorIcon = ({ groupName, name, size, style }) => {
@@ -42,6 +39,7 @@ const AccountPage = props => {
         <Box3 label="Weight" value={weight} />
       </View>
       <MyView iconName="envelope-o" label="Email" value={email} />
+      <MyView iconName="envelope-o" label="Phone" value={phone} />
       <View style={styles.aboutView}>
         <Text style={styles.aboutText}>About GYM</Text>
       </View>
