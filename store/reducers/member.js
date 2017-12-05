@@ -21,11 +21,14 @@ function update(state) {
 function fields(state, action) {
   switch (action.type) {
     case 'MEMBER_UPDATE':
+      return { ...state, ...action.payload };
+    case 'MEMBER_UPDATE_SAVE':
       return update({ ...state, ...action.payload });
     default:
       return state;
   }
 }
+
 
 export default function member(state = State, action) {
   switch (action.type) {
@@ -38,6 +41,7 @@ export default function member(state = State, action) {
       };
     case "ACTIVE_TAB":
       return { ...state, activeTab: action.payload };
+    case 'MEMBER_UPDATE_SAVE':
     case 'MEMBER_UPDATE':
       return { ...state, fields: fields(state.fields, action) };
     case 'MEMBER_FETCH':

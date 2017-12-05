@@ -10,6 +10,7 @@ import pack from '../../package.json';
 import styles from './styles';
 
 import { fb } from '../../data/firebase';
+import Members from '../../data/members';
 
 //       <Text style={styles.textTitle}>Hello!</Text>
 const Register = props => {
@@ -37,6 +38,7 @@ const Register = props => {
       <TextInput
         style={styles.textInput}
         name="password"
+        secureTextEntry={true}
         placeholder="Enter you password."
         onChangeText={value => handleChange({ value, name: 'password' })}
       />
@@ -123,21 +125,18 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   handleGirl: () => dispatch({ type: 'MEMBER_UPDATE', payload: { sex: 'f' } }),
 
   handleRegister: fields => async () => {
+    console.log(fields);
     if (!fields.email || !fields.name || !fields.password) return;
-    // const member = await Members.create(fields);
-    // if (member) {
-    // console.log(member);
     fb
       .auth()
       .createUserWithEmailAndPassword(fields.email, fields.password)
-      .catch(error => {
-        // @todo: onError
-        console.log(error);
-      })
       .then(user => {
+        console.log(user);
         if (user) {
-          user.updateProfile({
+          Members.saveById(user.uid, {
             displayName: fields.name,
+            email: fields.email,
+            sex: fields.sex,
           });
         }
       });
