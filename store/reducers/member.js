@@ -1,3 +1,5 @@
+import Members from '../../data/members';
+
 const State = {
   v: '0.0.1',
   activeTab: "Login",
@@ -10,10 +12,16 @@ const State = {
   ],
 };
 
+function update(state) {
+  Members.saveById(state.id, state);
+  return state;
+}
+
+
 function fields(state, action) {
   switch (action.type) {
     case 'MEMBER_UPDATE':
-      return { ...state, ...action.payload };
+      return update({ ...state, ...action.payload });
     default:
       return state;
   }

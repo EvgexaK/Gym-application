@@ -66,31 +66,17 @@ class AccountPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state.fields = serialise(this.props.fbUser);
+    // this.state.fields = serialise(this.props.fbUser);
+    // console.log(this.props);
   }
 
   static navigationOptions = {
     title: 'Account Page',
   };
 
-  handleChange = ({name, value}) => {
-    this.setState({
-      fields: {
-        ...this.state.fields,
-        [name]: value,
-      },
-    });
-    this.props.handleChange({
-      fbUser: this.props.fbUser,
-      name, value,
-    });
-  };
-
   render() {
-    const {handleChange} = this;
-    const { displayName, email, phone } = this.state.fields;
-    //
-    const { height, days, weight, fb } = this.props.fields;
+    const { handleChange } = this.props;
+    const { displayName, email, phone, height, weight } = this.props.fields;
     // const VectorIcons = {MaterialCommunityIcons};
 
     const VectorIcon = ({ groupName, name, size, style }) => {
@@ -159,8 +145,11 @@ class AccountPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleChange: ({ fbUser, name, value }) => {
-    fbUser.updateProfile({[name]:value});
+  handleChange: ({ name, value }) => {
+    dispatch({
+      type: 'MEMBER_UPDATE',
+      payload: { [name]: value },
+    });
   },
   fetchMember: async id => {
     const payload = await Members.getById(id);

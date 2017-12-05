@@ -16,6 +16,7 @@ import store from './store';
 import { fb } from './data/firebase';
 import Exercise from './data/exercise';
 import Equipment from './data/equipment';
+import Members from './data/members';
 
 export default class App extends React.Component {
   state = {
@@ -24,9 +25,16 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.fetchState();
-    fb.auth().onAuthStateChanged(fbUser => {
-      // console.log({fbUser});
-      store.dispatch({ type: 'MEMBER_FETCH', payload: { fbUser } });
+
+    fb.auth().onAuthStateChanged(async fbUser => {
+      let fields = await Members.getById(fbUser.uid);
+      if (!fields) {
+        fields = await Members.saveById(fbUser.uid, {
+          displayName: fbUser.displayName,
+          email: fbUser.email,
+        });
+      }
+      store.dispatch({ type: 'MEMBER_FETCH', payload: { fbUser, fields } });
     });
   }
 
