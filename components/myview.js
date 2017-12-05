@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
@@ -31,25 +31,28 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   textLabel: {},
+
   viewInput: {
     height: 48,
-    width: 200,
+    // width: 200,
+    flex: 1,
     padding: 11,
   },
+
   textInput: {
     flex: 1,
     height: 24,
     borderColor: 'gray',
     borderWidth: 1,
-    backgroundColor: 'white',
     borderRadius: 12,
     paddingLeft: 12,
     paddingRight: 12,
   },
 });
 
-const Input = props => {
-  const { iconName, label, dafaultValue, name } = props;
+const MyView = props => {
+  console.log(props);
+  const { iconName, label, value } = props;
   return (
     <View style={styles.row}>
       <View style={styles.coner}>
@@ -57,19 +60,13 @@ const Input = props => {
           <FontAwesome name={iconName} size={16} />
         </View>
         <View style={styles.viewInput}>
-          <TextInput
-            placeholder={label}
-            style={styles.textInput}
-            value={dafaultValue}
-            onChangeText={value =>
-              props.onChangeText && props.onChangeText({ name, value })}
-          />
+          <Text style={styles.textInput}>{value}</Text>
         </View>
       </View>
     </View>
   );
 };
 
-Input.propTypes = {};
+MyView.propTypes = {};
 
-export default Input;
+export default MyView;

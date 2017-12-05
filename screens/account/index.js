@@ -13,7 +13,7 @@ import styles from './styles';
 const AccountScreen = props => {
   // console.log(props);
   // const AccountView = props.edit ? <SettingsEdit /> :  <SettingsView />;
-  return props.fbUser ? <SettingsEdit /> : <Tabs />;
+  return props.fbUser ? <SettingsView /> : <Tabs />;
 };
 AccountScreen.navigationOptions = {
   title: 'Account',
