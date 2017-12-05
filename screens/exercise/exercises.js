@@ -16,7 +16,8 @@ export const Row = props => {
       color={'#F2C94C'}
       description={description}
       imageSource={img}
-      handlePress={() => navigate('Exercise', { id, name, type, description, img })}
+      handlePress={() =>
+        navigate('ExerciseItem', item)}
     />
   );
 };
@@ -30,12 +31,14 @@ const Exercises = props => {
       <FlatList
         horizontal
         data={data}
-        renderItem={item => (
-          <Row key={item.id} {...item} navigate={navigate} />
-        )}
+        renderItem={item => <Row key={item.id} {...item} navigate={navigate} />}
       />
     </ScrollView>
   );
+};
+
+Exercises.navigationOptions = {
+  title: 'Exercises',
 };
 
 export default connect(s => s.exercise)(Exercises);

@@ -14,7 +14,7 @@ import ExercisesScreen from '../screens/exercise/exercises';
 import ExerciseScreen from '../screens/exercise/index';
 
 import AccountScreen from '../screens/account/index';
-import TestScreen from '../screens/account/edit';
+import TestScreen from "../screens/Library";
 
 import ExerciseItem from '../components/ExerciseItem'
 const RootStackNavigator = StackNavigator(
