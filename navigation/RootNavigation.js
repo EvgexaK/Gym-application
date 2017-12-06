@@ -19,7 +19,7 @@ import TestScreen from '../screens/account/edit';
 import ExerciseItem from '../components/ExerciseItem'
 const RootStackNavigator = StackNavigator(
   {
-    // Test: { screen: TestScreen },
+     Test: { screen: TestScreen },
     Main: {
       screen: MainTabNavigator,
     },

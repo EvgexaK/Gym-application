@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, } from 'react-native';
 import { connect } from 'react-redux';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Layout from '../../constants/Layout';
 import Title from '../../components/Title';
@@ -8,6 +9,7 @@ import Box3 from '../../components/Box3';
 import Input from '../../components/Input';
 import * as Members from '../../data/members';
 import { fb } from '../../data/firebase';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const DEBUG = false;
 
@@ -24,10 +26,12 @@ const styles = StyleSheet.create({
   textLabel: {
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'Advent Pro Bold',
   },
   textLabel1: {
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'Advent Pro Bold',
   },
   aboutView: {
     height: 64,
@@ -89,10 +93,18 @@ class AccountPage extends React.Component {
       <ScrollView>
         <View style={styles.row}>
           <View style={styles.box}>
-            <Text style={styles.textLabel}>Wellcome</Text>
+            <Text style={styles.textLabel}>Wellcome,</Text>
             <Text style={styles.textLabel1}>
               {displayName}
             </Text>
+          </View>
+          <View>
+            <FontAwesome
+              name="gear"
+              size={32}
+              color="white"
+              backgroundColor='yellow'
+            />
           </View>
           <View style={styles.box}>
             <Text style={styles.textLabel}>Have a</Text>
@@ -101,7 +113,7 @@ class AccountPage extends React.Component {
         </View>
         <Input
           name="displayName"
-          VectorIcon
+          iconName='user'
           label="Display Name"
           dafaultValue={displayName}
           onChangeText={handleChange}
@@ -109,14 +121,14 @@ class AccountPage extends React.Component {
 
         <Input
           name="height"
-          VectorIcon
+          iconName='weight'
           label="Height"
           dafaultValue={height}
           onChangeText={handleChange}
         />
         <Input
           name="weight"
-          VectorIcon
+          iconName='weight'
           label="weight"
           dafaultValue={weight}
           onChangeText={handleChange}
