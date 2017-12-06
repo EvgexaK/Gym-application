@@ -10,7 +10,7 @@ import {
 import PropTypes from 'prop-types';
 
 import Layout from '../constants/Layout';
-const height = Layout.window.height / 2;
+const height = Layout.window.height / 3;
 const fontSize = 64;
 const styles = StyleSheet.create({
   touch: {

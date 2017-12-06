@@ -5,7 +5,7 @@ import { ScrollView, FlatList } from 'react-native';
 
 import ImageExercise from '../../components/ImageExercise';
 
-export const Row = props => {
+export const Item = props => {
   const { navigate } = props;
   const { id, name, type, description, img } = props.item;
   return (
@@ -17,32 +17,33 @@ export const Row = props => {
       description={description}
       imageSource={img}
       handlePress={() => {
-        navigate('Exercise', props.item)
+        navigate('Machine', props.item)
       }}
     />
   );
 };
 
-const Exercises = props => {
-  const { filter } = props.navigation.state.params;
+const List = props => {
+  console.log(props);
+  // const { filter } = props.navigation.state.params;
   const { items } = props;
   const data = items
-    .filter(v => v.muscle === filter)
     .map(item => ({ ...item, key: item.id }));
+  // console.log(data);
   const { navigate } = props.navigation;
   return (
     <ScrollView>
       <FlatList
         horizontal
         data={data}
-        renderItem={item => <Row {...item} navigate={navigate} />}
+        renderItem={item => <Item {...item} navigate={navigate} />}
       />
     </ScrollView>
   );
 };
 
-Exercises.navigationOptions = {
-  title: 'Exercises',
+List.navigationOptions = {
+  title: 'Machines',
 };
 
-export default connect(s => s.exercise)(Exercises);
+export default connect(s => s.equipment)(List);

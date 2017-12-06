@@ -8,7 +8,7 @@ const State = {
     email: '',
   },
   execs: [
-  // 'id1'
+  'id1'
   ],
 };
 

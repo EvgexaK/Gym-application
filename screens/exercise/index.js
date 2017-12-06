@@ -1,45 +1,29 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Image, ScrollView } from 'react-native';
+import React from 'react';
+import { ScrollView } from 'react-native';
+import BlockBtn from '../../components/block_btn3';
 
-import Liker from '../../components/liker';
-
-import abc from '../../assets/images/abs.png';
-import triceps from '../../assets/images/triceps.png';
-import situps from '../../assets/images/situps.png';
-import pushups from '../../assets/images/pushups.png';
-
-import styles from './styles';
-
-const Exercise = props => {
-  const { id } = props.navigation.state.params;
-
-  const { execs, handleLikeToggle } = props;
-  const isLike = !!execs.filter(v => v === id).length;
+const Library = props => {
+  const { navigate } = props.navigation;
   return (
-    <ScrollView vertical>
-      <Liker isLike={isLike} handleLikeToggle={handleLikeToggle(id, isLike)} />
-      <Image source={abc} />
-      <Image source={triceps} />
-      <Image source={situps} />
-      <Image source={pushups} />
+    <ScrollView style={{ flex: 1 }}>
+      <BlockBtn
+        label="BODY"
+        imageSource={require('../../assets/images/myBody.png')}
+        onPress={() => navigate('Exercises', { filter: 'body' })}
+      />
+      <BlockBtn
+        label="ARM"
+        imageSource={require('../../assets/images/myArm.png')}
+        onPress={() => navigate('Exercises', { filter: 'arm' })}
+      />
+      <BlockBtn
+        label="LEGS"
+        imageSource={require('../../assets/images/myLegs.png')}
+        onPress={() => navigate('Exercises', { filter: 'legs' })}
+      />
     </ScrollView>
   );
 };
+Library.navigationOptions = { title: 'Exercises' };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleLikeToggle: (payload, isLike) => () => {
-    // console.log({ payload, isLike });
-    isLike
-      ? dispatch({ type: 'MEMBER_EXEC_UNLIKE', payload })
-      : dispatch({ type: 'MEMBER_EXEC_LIKE', payload });
-  },
-});
-
-export default connect(
-  s => ({
-    execs: s.member.execs,
-  }),
-  mapDispatchToProps
-)(Exercise);
+export default Library;
