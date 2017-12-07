@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 import Layout from '../constants/Layout';
 const height = Layout.window.height / 2;
-const fontSize = 64;
+const fontSize = 60;
 const styles = StyleSheet.create({
   touch: {
     width: '100%',

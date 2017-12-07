@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, } from 'react-native';
 import { connect } from 'react-redux';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Layout from '../../constants/Layout';
 import Title from '../../components/Title';
@@ -26,10 +27,12 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 24,
+    fontFamily: 'Advent Pro Bold',
   },
   textLabel1: {
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'Advent Pro Bold',
   },
   aboutView: {
     height: 64,

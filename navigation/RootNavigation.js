@@ -14,12 +14,12 @@ import ExercisesScreen from '../screens/exercise/exercises';
 import ExerciseScreen from '../screens/exercise/exercise';
 
 import AccountScreen from '../screens/account/index';
-import TestScreen from '../screens/Library';
+import TestScreen from '../screens/account/edit';
 
 import ExerciseItem from '../components/ExerciseItem';
 const RootStackNavigator = StackNavigator(
   {
-    // Test: { screen: TestScreen },
+     //Test: { screen: TestScreen },
     Main: {
       screen: MainTabNavigator,
     },

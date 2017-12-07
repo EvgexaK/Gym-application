@@ -8,17 +8,17 @@ const Library = props => {
     <ScrollView style={{ flex: 1 }}>
       <BlockBtn
         label="BODY"
-        imageSource={require('../../assets/images/myBody.png')}
+        imageSource={require('../../assets/images/body.png')}
         onPress={() => navigate('Exercises', { filter: 'body' })}
       />
       <BlockBtn
-        label="ARM"
+        label="ARMS"
         imageSource={require('../../assets/images/myArm.png')}
         onPress={() => navigate('Exercises', { filter: 'arm' })}
       />
       <BlockBtn
         label="LEGS"
-        imageSource={require('../../assets/images/myLegs.png')}
+        imageSource={require('../../assets/images/legs.png')}
         onPress={() => navigate('Exercises', { filter: 'legs' })}
       />
     </ScrollView>
