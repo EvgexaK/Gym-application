@@ -32,7 +32,7 @@ const AccountPage = props => {
           <Text style={styles.textLabel}>Wellcome</Text>
 
           <Text style={styles.textLabel1}>
-            {groupName}
+            {name}
           </Text>
         </View>
         <View style={{ width: '20%', backgroundColor: 'black', paddingTop: 2 }}>
