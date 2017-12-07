@@ -10,9 +10,6 @@ import Input from '../../components/Input';
 import * as Members from '../../data/members';
 import { fb } from '../../data/firebase';
 
-
-const DEBUG = false;
-
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
