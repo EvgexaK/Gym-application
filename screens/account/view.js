@@ -103,10 +103,13 @@ const styles = StyleSheet.create({
   textLabel: {
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'Advent Pro Bold',
+    fontSize: 24,
   },
   textLabel1: {
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'Advent Pro Bold',
   },
   aboutView: {
     height: 64,
