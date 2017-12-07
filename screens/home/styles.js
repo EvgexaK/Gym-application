@@ -1,10 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: "transparent",
+    ...Platform.select({
+      ios: {backgroundColor: 'transparent'},
+      android: {}})
+   // backgroundColor: "rgba(0,0,0,0)",
   },
   backgroundImage: {
     position: "absolute",
@@ -17,7 +20,6 @@ const styles = StyleSheet.create({
     fontSize: 48,
     textAlign: 'center',
     fontFamily: 'Advent Pro Bold',
-    // textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
     textShadowOffset: {width: 2, height: 2},
     textShadowRadius: 5,
     textShadowColor: 'black',

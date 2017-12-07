@@ -24,7 +24,9 @@ import styles from './styles';
 │└───────────────┘ │
 └──────────────────┘
  */
-const Home = props => {
+
+
+ const Home = props => {
   const { execs } = props.member;
   const exercises = props.exercise.items;
   // liked - список любимых упражнений
