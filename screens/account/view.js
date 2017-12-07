@@ -17,7 +17,7 @@ import MaterialCommunityIcons
   from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AccountPage = props => {
-  const { name, height, days, weight, email, phone } = props.fields;
+  const { displayName, height, days, weight, email, phone } = props.fields;
   const { handleChange, handleSignOut, handleEdit } = props;
 
   const VectorIcon = ({ groupName, name, size, style }) => {
@@ -29,10 +29,10 @@ const AccountPage = props => {
     <ScrollView>
       <View style={styles.row}>
         <View style={styles.box}>
-          <Text style={styles.textLabel}>Wellcome</Text>
+          <Text style={styles.textLabel}>Welcome,</Text>
 
           <Text style={styles.textLabel1}>
-            {name}
+            {displayName}
           </Text>
         </View>
         <View style={{ width: '20%', backgroundColor: 'black', paddingTop: 2 }}>
