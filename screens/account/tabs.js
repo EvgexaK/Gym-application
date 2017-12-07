@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import { Image, View } from "react-native";
 
 import Button from "react-native-button";
-
-// import { Button } from 'react-native-elements'
-
 import Colors from "../../constants/Colors";
 import LoginScreen from "./login";
 import RegisterScreen from "./register";

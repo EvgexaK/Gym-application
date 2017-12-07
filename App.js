@@ -27,13 +27,17 @@ export default class App extends React.Component {
     this.fetchState();
 
     fb.auth().onAuthStateChanged(async fbUser => {
-      if (!fbUser) return;
-      let fields = await Members.getById(fbUser.uid);
-      if (!fields) {
-        fields = await Members.saveById(fbUser.uid, {
-          displayName: fbUser.displayName,
-          email: fbUser.email,
-        });
+      let fields;
+      if (fbUser){
+        fields = await Members.getById(fbUser.uid);
+        if (!fields) {
+          fields = await Members.saveById(fbUser.uid, {
+            displayName: fbUser.displayName,
+            email: fbUser.email,
+          });
+        }
+      } else {
+        fields = {};
       }
       store.dispatch({ type: 'MEMBER_FETCH', payload: { fbUser, fields } });
     });

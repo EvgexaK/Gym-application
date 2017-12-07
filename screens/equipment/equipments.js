@@ -24,12 +24,10 @@ export const Item = props => {
 };
 
 const List = props => {
-  console.log(props);
   // const { filter } = props.navigation.state.params;
   const { items } = props;
   const data = items
     .map(item => ({ ...item, key: item.id }));
-  // console.log(data);
   const { navigate } = props.navigation;
   return (
     <ScrollView>

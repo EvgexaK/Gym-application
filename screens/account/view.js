@@ -1,19 +1,23 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 
+import { fb } from '../../data/firebase';
 import Layout from '../../constants/Layout';
 import Title from '../../components/Title';
 import Box3 from '../../components/Box3';
 import Input from '../../components/Input';
 import MyView from '../../components/myview';
 import * as Members from '../../data/members';
+import Button from 'react-native-button';
+
 import MaterialCommunityIcons
   from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AccountPage = props => {
   const { name, height, days, weight, email, phone } = props.fields;
-  const { handleChange } = props;
+  const { handleChange, handleSignOut } = props;
   const VectorIcon = ({ groupName, name, size, style }) => {
     let Icon = VectorIcons[groupName];
     return <Icon name={name} size={size} style={style} />;
@@ -41,7 +45,23 @@ const AccountPage = props => {
       <MyView iconName="envelope-o" label="Email" value={email} />
       <MyView iconName="envelope-o" label="Phone" value={phone} />
       <View style={styles.aboutView}>
-        <Text style={styles.aboutText}>About GYM</Text>
+        <Button
+          onPress={handleSignOut}
+          style={{
+            fontSize: 16,
+            color: '#000',
+          }}
+          containerStyle={{
+            // width: '50%',
+            padding: 4,
+            height: 28,
+            overflow: 'hidden',
+            borderRadius: 14,
+            backgroundColor: '#E9B52F',
+          }}
+        >
+          SignOut
+        </Button>
       </View>
     </ScrollView>
   );
@@ -81,7 +101,16 @@ const styles = StyleSheet.create({
   },
 });
 
+AccountPage.propTypes = {
+  handleSignOut: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleSignOut: () => {
+    fb.auth().signOut().then(() => {
+      dispatch({ type: 'USER_SIGNOUT' });
+    });
+  },
   handleChange: ({ name, value }) => {
     const payload = {};
     payload[name] = value;

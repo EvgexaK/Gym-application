@@ -29,7 +29,6 @@ const Home = props => {
   const exercises = props.exercise.items;
   // liked - список любимых упражнений
   const liked = exercises.filter(v => execs.indexOf(v.id) !== -1);
-  // console.log({liked});
   return (
     <View>
       <Image

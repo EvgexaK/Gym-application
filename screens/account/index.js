@@ -11,7 +11,6 @@ import styles from './styles';
 
 // create a component
 const AccountScreen = props => {
-  // console.log(props);
   const AccountView = props.edit ? <SettingsEdit /> :  <SettingsView />;
   return props.fbUser ? AccountView : <Tabs />;
 };

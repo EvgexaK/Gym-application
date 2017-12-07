@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       .signInWithEmailAndPassword(State.email, State.password)
       .catch(error => {
         // @todo: onError
-        console.log(error);
+        // console.log(error);
       })
       .then(fbUser => {
         dispatch({ type: 'MEMBER_FETCH', payload: { fbUser } });

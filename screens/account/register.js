@@ -125,13 +125,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   handleGirl: () => dispatch({ type: 'MEMBER_UPDATE', payload: { sex: 'f' } }),
 
   handleRegister: fields => async () => {
-    console.log(fields);
     if (!fields.email || !fields.name || !fields.password) return;
     fb
       .auth()
       .createUserWithEmailAndPassword(fields.email, fields.password)
       .then(user => {
-        console.log(user);
         if (user) {
           Members.saveById(user.uid, {
             displayName: fields.name,

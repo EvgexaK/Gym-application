@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   textLabel: {
     color: 'white',
     textAlign: 'center',
-    fontSize:24,
+    fontSize: 24,
   },
   textLabel1: {
     color: 'white',
@@ -59,91 +59,78 @@ const serialise = user => {
   return res;
 };
 
-class AccountPage extends React.Component {
-  state = {
-    fields: {},
-    isLoadingComplete: false,
+const AccountPage = () => {
+  const { handleChange } = this.props;
+  console.log(this.props.fields);
+  const { displayName, email, phone, height, weight } = this.props.fields;
+  // const VectorIcons = {MaterialCommunityIcons};
+
+  const VectorIcon = ({ groupName, name, size, style }) => {
+    let Icon = VectorIcons[groupName];
+    return <Icon name={name} size={size} style={style} />;
   };
 
-  constructor(props) {
-    super(props);
-    // this.state.fields = serialise(this.props.fbUser);
-    // console.log(this.props);
-  }
-
-  static navigationOptions = {
-    title: 'Account Page',
-  };
-
-  render() {
-    const { handleChange } = this.props;
-    console.log(this.props.fields);
-    const { displayName, email, phone, height, weight } = this.props.fields;
-    // const VectorIcons = {MaterialCommunityIcons};
-
-    const VectorIcon = ({ groupName, name, size, style }) => {
-      let Icon = VectorIcons[groupName];
-      return <Icon name={name} size={size} style={style} />;
-    };
-
-    return (
-      <ScrollView>
-        <View style={styles.row}>
-          <View style={styles.box}>
-            <Text style={styles.textLabel}>Wellcome</Text>
-            <Text style={styles.textLabel1}>
-              {displayName}
-            </Text>
-          </View>
-          <View style={styles.box}>
-            <Text style={styles.textLabel}>Have a</Text>
-            <Text style={styles.textLabel1}>Nice day!</Text>
-          </View>
+  return (
+    <ScrollView>
+      <View style={styles.row}>
+        <View style={styles.box}>
+          <Text style={styles.textLabel}>Wellcome</Text>
+          <Text style={styles.textLabel1}>
+            {displayName}
+          </Text>
         </View>
-        <Input
-          name="displayName"
-          VectorIcon
-          label="Display Name"
-          dafaultValue={displayName}
-          onChangeText={handleChange}
-        />
-
-        <Input
-          name="height"
-          VectorIcon
-          label="Height"
-          dafaultValue={height}
-          onChangeText={handleChange}
-        />
-        <Input
-          name="weight"
-          VectorIcon
-          label="weight"
-          dafaultValue={weight}
-          onChangeText={handleChange}
-        />
-        <Input
-          name="email"
-          iconName="envelope-o"
-          label="Email"
-          dafaultValue={email}
-          onChangeText={handleChange}
-        />
-        <Input
-          name="phone"
-          iconName="phone"
-          label="Phone"
-          dafaultValue={phone}
-          onChangeText={handleChange}
-        />
-
-        <View style={styles.aboutView}>
-          <Text style={styles.aboutText}>About GYM</Text>
+        <View style={styles.box}>
+          <Text style={styles.textLabel}>Have a</Text>
+          <Text style={styles.textLabel1}>Nice day!</Text>
         </View>
-      </ScrollView>
-    );
-  }
-}
+      </View>
+      <Input
+        name="displayName"
+        VectorIcon
+        label="Display Name"
+        dafaultValue={displayName}
+        onChangeText={handleChange}
+      />
+
+      <Input
+        name="height"
+        VectorIcon
+        label="Height"
+        dafaultValue={height}
+        onChangeText={handleChange}
+      />
+      <Input
+        name="weight"
+        VectorIcon
+        label="weight"
+        dafaultValue={weight}
+        onChangeText={handleChange}
+      />
+      <Input
+        name="email"
+        iconName="envelope-o"
+        label="Email"
+        dafaultValue={email}
+        onChangeText={handleChange}
+      />
+      <Input
+        name="phone"
+        iconName="phone"
+        label="Phone"
+        dafaultValue={phone}
+        onChangeText={handleChange}
+      />
+
+      <View style={styles.aboutView}>
+        <Text style={styles.aboutText}>About GYM</Text>
+      </View>
+    </ScrollView>
+  );
+};
+
+AccountPage.navigationOptions = {
+  title: 'Account Page',
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleChange: ({ name, value }) => {
