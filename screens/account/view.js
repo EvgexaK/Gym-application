@@ -30,7 +30,6 @@ const AccountPage = props => {
       <View style={styles.row}>
         <View style={styles.box}>
           <Text style={styles.textLabel}>Wellcome</Text>
-
           <Text style={styles.textLabel1}>
             {name}
           </Text>
