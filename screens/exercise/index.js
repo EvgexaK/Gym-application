@@ -13,7 +13,7 @@ const Library = props => {
       />
       <BlockBtn
         label="ARMS"
-        imageSource={require('../../assets/images/myArm.png')}
+        imageSource={require('../../assets/images/arms.png')}
         onPress={() => navigate('Exercises', { filter: 'arm' })}
       />
       <BlockBtn
