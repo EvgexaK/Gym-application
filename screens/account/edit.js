@@ -121,14 +121,14 @@ class AccountPage extends React.Component {
 
         <Input
           name="height"
-          iconName='weight'
+          iconName=''
           label="Height"
           dafaultValue={height}
           onChangeText={handleChange}
         />
         <Input
           name="weight"
-          iconName='weight'
+          iconName=''
           label="weight"
           dafaultValue={weight}
           onChangeText={handleChange}
@@ -159,7 +159,7 @@ class AccountPage extends React.Component {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleChange: ({ name, value }) => {
     dispatch({
-      type: 'MEMBER_UPDATE',
+      type: 'MEMBER_UPDATE_SAVE',
       payload: { [name]: value },
     });
   },

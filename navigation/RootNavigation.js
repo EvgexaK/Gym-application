@@ -6,44 +6,38 @@ import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync
   from '../api/registerForPushNotificationsAsync';
 
-import SingleExerciseScreen from '../screens/SingleExerciseScreen';
-import ListOfExercises from '../screens/ListOfExercises';
-import MachinesScreen from '../screens/MachinesScreen';
+import EquipmentsScreen from '../screens/equipment/equipments';
+import EquipmentScreen from '../screens/equipment/equipment';
 
+import ExerciseGroupsScreen from '../screens/exercise/index';
 import ExercisesScreen from '../screens/exercise/exercises';
-import ExerciseScreen from '../screens/exercise/index';
+import ExerciseScreen from '../screens/exercise/exercise';
 
 import AccountScreen from '../screens/account/index';
 import TestScreen from '../screens/account/edit';
 
-import ExerciseItem from '../components/ExerciseItem'
+import ExerciseItem from '../components/ExerciseItem';
 const RootStackNavigator = StackNavigator(
   {
-     Test: { screen: TestScreen },
+     //Test: { screen: TestScreen },
     Main: {
       screen: MainTabNavigator,
     },
-    SingleExercise: {
-      screen: SingleExerciseScreen,
+    ExerciseGroups: {
+      screen: ExerciseGroupsScreen,
     },
-    ExercisesScreen: {
+    Exercises: {
       screen: ExercisesScreen,
     },
-    ListOfExercises: {
-      screen: ListOfExercises
+    Exercise: {
+      screen: ExerciseScreen,
     },
-    RegisterScreen: {
-      screen: AccountScreen,
+    Equipments: {
+      screen: EquipmentsScreen,
     },
-    Exercise:{
-       screen: ExerciseScreen,
+    Equipment: {
+      screen: EquipmentScreen,
     },
-    ExerciseItem:{
-      screen: ExerciseItem
-    },
-    Machines: {
-      screen: MachinesScreen
-    }
   },
   {
     navigationOptions: () => ({

@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
 });
 
 const Liker = props => {
-  const {isLike} = props;
+  const {isLike, onPress} = props;
   return (
     <FontAwesome
-      onPress={props.handleLikeToggle}
+      onPress={onPress}
       name="heart"
       size={32}
       style={isLike
@@ -36,7 +36,7 @@ const Liker = props => {
 
 Liker.propTypes = {
   isLike: PropTypes.bool.isRequired,
-  handleLikeToggle: PropTypes.func.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default Liker;

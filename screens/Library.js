@@ -1,33 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
-import Layout from '../constants/Layout'
-export default class Library extends React.Component {
-  static navigationOptions = {
-    title: 'Library',
-  };
+import { ScrollView } from 'react-native';
+import BlockBtn from '../components/block_btn';
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity style={{flex: 1}}
-        onPress={() => this.props.navigation.navigate('SingleExercise', { name: "Benchpress"})}>
-        <Image style={styles.img} source={require('../assets/images/exercises.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity style={{flex: 1}}
-        onPress={() => this.props.navigation.navigate('Machines', { name: "Benchpress"})}>
-        <Image style={styles.img} source={require('../assets/images/machines.png')} />
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+const Library = props => {
+  const { navigate } = props.navigation;
+  return (
+    <ScrollView style={{ flex: 1 }}>
+      <BlockBtn
+        label="EXERCISES"
+        imageSource={require('../assets/images/exercises.png')}
+        onPress={() => navigate('ExerciseGroups', { filter: false })}
+      />
+      <BlockBtn
+        label="EQUIPMENTS"
+        imageSource={require('../assets/images/machines.png')}
+        onPress={() => navigate('Equipments', { filter: false })}
+      />
+    </ScrollView>
+  );
+};
+Library.navigationOptions = { title: 'Library' };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  img : {
-    width: Layout.window.width,
-    height: Layout.window.height * 0.46
-  }
-});
+export default Library;

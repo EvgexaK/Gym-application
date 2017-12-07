@@ -8,7 +8,7 @@ const State = {
     email: '',
   },
   execs: [
-  // 'id1'
+  'id1'
   ],
 };
 
@@ -44,6 +44,8 @@ export default function member(state = State, action) {
     case 'MEMBER_UPDATE_SAVE':
     case 'MEMBER_UPDATE':
       return { ...state, fields: fields(state.fields, action) };
+    case 'MEMBER_EDIT':
+      return { ...state, edit: !state.edit };
     case 'MEMBER_FETCH':
       return { ...state, ...action.payload };
     default:
