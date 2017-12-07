@@ -9,7 +9,7 @@ import Box3 from '../../components/Box3';
 import Input from '../../components/Input';
 import * as Members from '../../data/members';
 import { fb } from '../../data/firebase';
-import { FontAwesome } from '@expo/vector-icons';
+
 
 const DEBUG = false;
 
