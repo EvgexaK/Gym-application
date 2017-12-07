@@ -12,7 +12,7 @@ class Database {
         let ref = firebase.database().ref().child('Equipments');
         ref.on('value', (snap) => {
             callback(snap.val())
-            console.log(snap.val())
+            // console.log(snap.val())
         })
     }
 }

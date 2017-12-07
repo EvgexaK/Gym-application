@@ -50,7 +50,7 @@ export default class App extends React.Component {
     }
     // get Equipments
     const equipments = await Equipment.all();
-    console.log(equipments);
+    // console.log(equipments);
     if (equipments) {
       store.dispatch({
         type: 'EQUIPMENT_FETCH',
