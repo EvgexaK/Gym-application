@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View, } from 'react-native';
 import { connect } from 'react-redux';
-import { FontAwesome } from '@expo/vector-icons';
 
 import Layout from '../../constants/Layout';
 import Title from '../../components/Title';
