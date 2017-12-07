@@ -17,7 +17,7 @@ import MaterialCommunityIcons
   from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AccountPage = props => {
-  const { displayName, height, days, weight, email, phone } = props.fields;
+  const { name, height, days, weight, email, phone } = props.fields;
   const { handleChange, handleSignOut, handleEdit } = props;
 
   const VectorIcon = ({ groupName, name, size, style }) => {
@@ -25,18 +25,34 @@ const AccountPage = props => {
     return <Icon name={name} size={size} style={style} />;
   };
 
-  return <ScrollView>
+  return (
+    <ScrollView>
       <View style={styles.row}>
         <View style={styles.box}>
           <Text style={styles.textLabel}>Wellcome</Text>
 
           <Text style={styles.textLabel1}>
-            {displayName}
+            {name}
           </Text>
         </View>
-        <View style={{ width: "20%", backgroundColor: "black", paddingTop: 2 }}>
-          <View style={{ height: 48, width: 48, borderTopLeftRadius: 22, borderTopRightRadius: 22, backgroundColor: "#E9B52F", padding: 6 }}>
-            <FontAwesome onPress={handleEdit} name="gear" size={42} style={{ backgroundColor: "transparent" }} color="#262626" />
+        <View style={{ width: '20%', backgroundColor: 'black', paddingTop: 2 }}>
+          <View
+            style={{
+              height: 48,
+              width: 48,
+              borderTopLeftRadius: 22,
+              borderTopRightRadius: 22,
+              backgroundColor: '#E9B52F',
+              padding: 6,
+            }}
+          >
+            <FontAwesome
+              onPress={handleEdit}
+              name="gear"
+              size={42}
+              style={{ backgroundColor: 'transparent' }}
+              color="#262626"
+            />
           </View>
         </View>
         <View style={styles.box}>
@@ -50,14 +66,28 @@ const AccountPage = props => {
         <Box3 label="Weight" value={weight} />
       </View>
       <MyView iconName="envelope-o" label="Email" value={email} />
-      <MyView iconName="envelope-o" label="Phone" value={phone} />
+      <MyView iconName="phone" label="Phone" value={phone} />
       <View style={styles.aboutView}>
-        <Button onPress={handleSignOut} style={{ fontSize: 16, color: "#000" }} containerStyle={{ // width: '50%',
-            padding: 4, height: 28, overflow: "hidden", borderRadius: 14, backgroundColor: "#E9B52F" }}>
+        <Button
+          onPress={handleSignOut}
+          style={{
+            fontSize: 16,
+            color: '#000',
+          }}
+          containerStyle={{
+            // width: '50%',
+            padding: 4,
+            height: 28,
+            overflow: 'hidden',
+            borderRadius: 14,
+            backgroundColor: '#E9B52F',
+          }}
+        >
           SignOut
         </Button>
       </View>
-    </ScrollView>;
+    </ScrollView>
+  );
 };
 
 const styles = StyleSheet.create({
