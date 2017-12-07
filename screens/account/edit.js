@@ -8,6 +8,7 @@ import Box3 from '../../components/Box3';
 import Input from '../../components/Input';
 import * as Members from '../../data/members';
 import { fb } from '../../data/firebase';
+import { FontAwesome } from '@expo/vector-icons';
 
 const DEBUG = false;
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   },
   box: {
     height: 50,
-    width: '50%',
+    width: '40%',
     backgroundColor: 'black',
   },
   textLabel: {
@@ -59,14 +60,12 @@ const serialise = user => {
   return res;
 };
 
-const AccountPage = () => {
-  const { handleChange } = this.props;
-  console.log(this.props.fields);
-  const { displayName, email, phone, height, weight } = this.props.fields;
-  // const VectorIcons = {MaterialCommunityIcons};
+const AccountEditPage = props => {
+  const { handleChange, handleView } = props;
+  const { displayName, email, phone, height, weight } = props.fields;
 
   const VectorIcon = ({ groupName, name, size, style }) => {
-    let Icon = VectorIcons[groupName];
+    const Icon = VectorIcons[groupName];
     return <Icon name={name} size={size} style={style} />;
   };
 
@@ -78,6 +77,26 @@ const AccountPage = () => {
           <Text style={styles.textLabel1}>
             {displayName}
           </Text>
+        </View>
+        <View style={{ width: '20%', backgroundColor: 'black', paddingTop: 2 }}>
+          <View
+            style={{
+              height: 48,
+              width: 48,
+              borderTopLeftRadius: 22,
+              borderTopRightRadius: 22,
+              backgroundColor: '#E9B52F',
+              padding: 6,
+            }}
+          >
+            <FontAwesome
+              onPress={handleView}
+              name="gear"
+              size={42}
+              style={{ backgroundColor: 'transparent' }}
+              color="#262626"
+            />
+          </View>
         </View>
         <View style={styles.box}>
           <Text style={styles.textLabel}>Have a</Text>
@@ -128,11 +147,12 @@ const AccountPage = () => {
   );
 };
 
-AccountPage.navigationOptions = {
+AccountEditPage.navigationOptions = {
   title: 'Account Page',
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleView: () => dispatch({ type: 'MEMBER_EDIT' }),
   handleChange: ({ name, value }) => {
     dispatch({
       type: 'MEMBER_UPDATE_SAVE',
@@ -145,4 +165,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 });
 
-export default connect(s => s.member, mapDispatchToProps)(AccountPage);
+export default connect(s => s.member, mapDispatchToProps)(AccountEditPage);

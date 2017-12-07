@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import { fb } from '../../data/firebase';
 import Layout from '../../constants/Layout';
@@ -11,13 +11,15 @@ import Input from '../../components/Input';
 import MyView from '../../components/myview';
 import * as Members from '../../data/members';
 import Button from 'react-native-button';
+import { FontAwesome } from '@expo/vector-icons';
 
 import MaterialCommunityIcons
   from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const AccountPage = props => {
   const { name, height, days, weight, email, phone } = props.fields;
-  const { handleChange, handleSignOut } = props;
+  const { handleChange, handleSignOut, handleEdit } = props;
+
   const VectorIcon = ({ groupName, name, size, style }) => {
     let Icon = VectorIcons[groupName];
     return <Icon name={name} size={size} style={style} />;
@@ -28,9 +30,30 @@ const AccountPage = props => {
       <View style={styles.row}>
         <View style={styles.box}>
           <Text style={styles.textLabel}>Wellcome</Text>
+
           <Text style={styles.textLabel1}>
             {name}
           </Text>
+        </View>
+        <View style={{ width: '20%', backgroundColor: 'black', paddingTop: 2 }}>
+          <View
+            style={{
+              height: 48,
+              width: 48,
+              borderTopLeftRadius: 22,
+              borderTopRightRadius: 22,
+              backgroundColor: '#E9B52F',
+              padding: 6,
+            }}
+          >
+            <FontAwesome
+              onPress={handleEdit}
+              name="gear"
+              size={42}
+              style={{ backgroundColor: 'transparent' }}
+              color="#262626"
+            />
+          </View>
         </View>
         <View style={styles.box}>
           <Text style={styles.textLabel}>Have a</Text>
@@ -74,7 +97,7 @@ const styles = StyleSheet.create({
   },
   box: {
     height: 50,
-    width: '50%',
+    width: '40%',
     backgroundColor: 'black',
   },
   textLabel: {
@@ -106,6 +129,7 @@ AccountPage.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleEdit: () => dispatch({ type: 'MEMBER_EDIT' }),
   handleSignOut: () => {
     fb.auth().signOut().then(() => {
       dispatch({ type: 'USER_SIGNOUT' });
