@@ -73,7 +73,7 @@ const AccountEditPage = props => {
     <ScrollView>
       <View style={styles.row}>
         <View style={styles.box}>
-          <Text style={styles.textLabel}>Wellcome</Text>
+          <Text style={styles.textLabel}>Welcome,</Text>
           <Text style={styles.textLabel1}>
             {displayName}
           </Text>

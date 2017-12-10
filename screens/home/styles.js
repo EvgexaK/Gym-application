@@ -6,8 +6,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     ...Platform.select({
       ios: {backgroundColor: 'transparent'},
-      android: {}})
-   // backgroundColor: "rgba(0,0,0,0)",
+      android: {}}),
   },
   backgroundImage: {
     position: "absolute",
