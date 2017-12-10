@@ -35,7 +35,7 @@ import styles from './styles';
     <View>
       <Image
         style={styles.backgroundImage}
-        source={require('../../assets/images/bg_home.jpg')}
+        source={require('../../assets/images/bghome.jpg')}
       />
       <View style={styles.container}>
         <Text style={styles.title}>Wake Up.</Text>

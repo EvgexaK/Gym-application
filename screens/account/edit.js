@@ -9,6 +9,7 @@ import Box3 from '../../components/Box3';
 import Input from '../../components/Input';
 import * as Members from '../../data/members';
 import { fb } from '../../data/firebase';
+import Button from 'react-native-button';
 
 const styles = StyleSheet.create({
   row: {
@@ -62,6 +63,7 @@ const serialise = user => {
 
 const AccountEditPage = props => {
   const { handleChange, handleView } = props;
+  const { navigate } = props.navigation;
   const { displayName, email, phone, height, weight } = props.fields;
 
   const VectorIcon = ({ groupName, name, size, style }) => {
@@ -141,7 +143,9 @@ const AccountEditPage = props => {
       />
 
       <View style={styles.aboutView}>
-        <Text style={styles.aboutText}>About GYM</Text>
+        <Button
+        onPress={()=>navigate('About')}
+        style={styles.aboutText}>About GYM</Button>
       </View>
     </ScrollView>
   );
