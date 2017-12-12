@@ -5,14 +5,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
-    flexDirection: "column"
+    flexDirection: "column",
+    marginTop: 95
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: "cover"
-    //position:'absolute',
-    //height: '100%',
+    resizeMode: "cover",
   },
   contact: {
     width: "100%",
@@ -31,7 +29,7 @@ const styles = StyleSheet.create({
     color: "#E9B52F",
     fontSize: 32,
     textAlign: "center",
-    fontFamily: "Advent Pro Bold"
+    fontFamily: "Advent Pro Bold",
   }
 });
 

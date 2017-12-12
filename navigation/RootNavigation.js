@@ -17,6 +17,7 @@ import AccountScreen from '../screens/account/index';
 import TestScreen from '../screens/account/edit';
 
 import ExerciseItem from '../components/ExerciseItem';
+import AboutScreen from '../screens/about/index';
 const RootStackNavigator = StackNavigator(
   {
      //Test: { screen: TestScreen },
@@ -37,6 +38,9 @@ const RootStackNavigator = StackNavigator(
     },
     Equipment: {
       screen: EquipmentScreen,
+    },
+    About: {
+      screen: AboutScreen,
     },
   },
   {

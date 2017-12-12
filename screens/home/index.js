@@ -43,7 +43,7 @@ const Home = props => {
     <View>
       <Image
         style={styles.backgroundImage}
-        source={require('../../assets/images/bg_home.jpg')}
+        source={require('../../assets/images/bghome.jpg')}
       />
       <FlatList 
         style={{padding: 50}}

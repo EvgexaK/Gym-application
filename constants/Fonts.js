@@ -1,7 +1,6 @@
 export const titleText = {
-  fontFamily: 'Advent Pro',
-  fontSize: 20,
-  fontWeight: 'bold',
+  fontFamily: 'Advent Pro Bold',
+  fontSize: 32,
   color: 'white',
   textAlign: 'center',
   lineHeight: 50,
