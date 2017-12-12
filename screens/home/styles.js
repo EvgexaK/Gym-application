@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     position: "absolute",
-    resizeMode: "cover"
+    resizeMode: "cover",
+    flex: 1
   },
   title: {
     width: '100%',

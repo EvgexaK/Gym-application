@@ -1,11 +1,18 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import BlockBtn from '../components/block_btn';
 
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center'
+  }
+});
 const Library = props => {
   const { navigate } = props.navigation;
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={styles.contentContainer}>
       <BlockBtn
         label="EXERCISES"
         imageSource={require('../assets/images/exercises.png')}

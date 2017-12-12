@@ -1,50 +1,58 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ScrollView, View, Text, Image } from 'react-native';
+import { ScrollView, View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 import styles from './styles';
-/*
-
- любимые надо сделать так:
-┌──────────────────┐
-│    УПРАЖНЕНИЯ    │
-├──────────────────┤
-│┌───────────────┐ │
-││  упражнение1  │ │
-│├───────────────┤ │
-││  упражнение2  │ │
-│└───────────────┘ │
-├──────────────────┤
-│    ТРЕНАЖЕРЫ     │
-├──────────────────┤
-│┌───────────────┐ │
-││   тренажер1   │ │
-│├───────────────┤ │
-││   тренажер2   │ │
-│└───────────────┘ │
-└──────────────────┘
- */
+import GridView from 'react-native-super-grid';
 
 
- const Home = props => {
+const FlatListItem = props => {
+  const {name} = props.item;
+  return (<View style={{
+    marginBottom: 4,
+    backgroundColor:'#F2C94C',
+    flex: 1,
+    flexDirection: 'column', 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    borderColor: '#808080',
+    borderWidth: 1,
+    borderRadius: 10
+    }}>
+    <TouchableOpacity onPress={() => {props.navigate('Exercise', props.item)}}>
+      <Text style={{
+        color:'white',
+        fontSize: 28,
+        fontFamily: 'Advent Pro Bold',
+        padding: 10}}
+      >
+        {name}
+      </Text>
+    </TouchableOpacity>
+  </View>)
+};
+
+
+
+const Home = props => {
   const { execs } = props.member;
   const exercises = props.exercise.items;
-  // liked - список любимых упражнений
   const liked = exercises.filter(v => execs.indexOf(v.id) !== -1);
+  const { navigate } = props.navigation;
   return (
     <View>
       <Image
         style={styles.backgroundImage}
         source={require('../../assets/images/bg_home.jpg')}
       />
-      <View style={styles.container}>
-        <Text style={styles.title}>Wake Up.</Text>
-        <Text style={styles.title}>Work Out.</Text>
-        <Text style={styles.title}>Look Hot.</Text>
-        <Text style={styles.title}>Go to Gym.</Text>
-      </View>
+      <FlatList 
+        style={{padding: 50}}
+        data={liked}
+        renderItem={(item) => <FlatListItem {...item} navigate={navigate} />}
+      />
     </View>
   );
+  
 };
 Home.navigationOptions = {
   title: 'Home',
